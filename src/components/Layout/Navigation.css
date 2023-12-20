@@ -1,0 +1,41 @@
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px; /* Adjust padding as needed */
+    background-color:#F8F8F0; /* Or any color that fits your app theme */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: Adds a subtle shadow for depth */
+    position: fixed; /* Keeps the header at the top */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; /* Ensures header stays above other content */
+  }
+.Header h2 {
+    margin: 0; /* Remove default margin */
+}
+
+.weather-Logo {
+    width: 180px; /* Adjust this as needed */
+    height: 150px; /* Maintain aspect ratio */
+}
+
+.Navigation {
+    display: flex;
+}
+
+.Navigation button {
+    margin-left: 10px;
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none;
+    background-color: #74a7de; /* Example button color */
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    cursor: pointer;
+    width: 120px; 
+    height: 70px;
+}
+
+.Navigation button:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  flex-direction: column;
+  background-color: azure;
+  padding: 20px;
+  border: 2px solid #74a7de; 
+  border-radius: 12px;  
+  width: 200%; 
+  margin-top: 180px; 
+  box-sizing: border-box;
+  }
+
