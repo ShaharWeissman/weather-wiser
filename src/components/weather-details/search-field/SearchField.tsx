@@ -1,6 +1,6 @@
 import {Autocomplete,TextField} from '@mui/material';
-
-const cityMockData = [{name: 'London'}, {name: 'New York'}];
+import './SearchField.css';
+const cityMockData = [{name: 'London'}, {name: 'New York'}, {name: 'Tel Aviv'}];
 
 function SearchField(): JSX.Element {
 return (

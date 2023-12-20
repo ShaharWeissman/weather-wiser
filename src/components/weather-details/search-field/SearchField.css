@@ -1,3 +1,30 @@
-.SearchField{
-    width:100%;
-}
+.SearchField {
+    width: 50%; /* Adjust the width as needed */
+    margin: 200px auto 20px; /* Center the field with top and bottom margin */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    background-color: #fff; /* Light background for contrast */
+  }
+  
+  /* Styles to enhance Material-UI TextField */
+  .MuiTextField-root {
+    width: 100%;
+    border-radius: 8px; 
+  }
+  
+  .MuiAutocomplete-root .MuiOutlinedInput-root {
+    padding: 10px; 
+    border: 1px solid #74a7de; 
+    &:hover {
+      border-color: #507dac; 
+    }
+  }
+  
+  /* Enhancing the Input Label */
+  .MuiInputLabel-root {
+    color: #74a7de;
+    &.Mui-focused {
+      color: #507dac; 
+    }
+  }
+  

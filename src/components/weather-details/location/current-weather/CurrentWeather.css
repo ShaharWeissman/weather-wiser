@@ -1,13 +1,13 @@
 .current-weather {
     display: flex;
-    justify-content: space-between; /* This will push the .current-data to the left and .favorites to the right */
-    align-items: center; 
-    width: 100%; 
-    padding: 10px 0; /* Add vertical padding if needed, no horizontal padding to ensure elements align to the edges */
-}
-.current-view{
-    display: block;
-}
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 800px; 
+    padding: 10px;
+  }
+  
+
 .current-data {
     display: flex;
     flex-direction: column; 
@@ -29,4 +29,8 @@
     cursor: pointer;
     width: 120px;
     height: 70px;
+    
+}
+.favorites button:hover {
+    opacity: 0.8;
 }

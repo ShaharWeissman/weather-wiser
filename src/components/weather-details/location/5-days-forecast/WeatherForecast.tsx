@@ -1,6 +1,6 @@
 import { Card, Typography } from '@mui/material';
-import { mockData, WeatherDay } from '../../../../services/ApiService';
 import './WeatherForecast.css'; // Make sure the path is correct
+import { WeatherDay, mockData } from '../../../../services/ApiService';
 
 function WeatherForecast(): JSX.Element {
   return (

@@ -1,23 +1,19 @@
-.WeatherDetails{
-display: flex;
+.WeatherDetails {
+  display: flex;
   flex-direction: column;
-  align-items: center; /* Center children horizontally */
-  justify-content: flex-start; /* Align children to the start vertically */
-  width: 100%; /* Take up full width of its parent */
-  max-width: 600px; /* Or however wide you want it to be */
-  margin: 0 auto; /* Center the WeatherDetails in the Layout component */
-  padding: 20px; /* Add some padding */
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 20px;
   box-sizing: border-box;
 }
 
-.location{
+.location {
   width: 100%;
-  max-width: 1000px;
-  min-height: 100px;
   padding: 20px;
   border-radius: 25px;
-  border:2px solid #ccc;
+  border: 2px solid #ccc;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   background-color: white;
-
+  margin-bottom: 20px; /* Add some space below the location */
 }

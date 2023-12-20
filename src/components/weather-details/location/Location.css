@@ -1,14 +1,13 @@
 .container {
   display: flex;
-  justify-content: center; 
-  align-items: center;
   flex-direction: column;
-  background-color: azure;
+  align-items: center;
+  background-color:#F8F8F0;
   padding: 20px;
-  border: 2px solid #74a7de; 
-  border-radius: 12px;  
-  width: 200%; 
-  margin-top: 180px; 
+  border: 2px solid #74a7de;
+  border-radius: 12px;
+  width: 70%; /* Updated to take the full width */
+  margin-top:20px;
   box-sizing: border-box;
   }
 

@@ -2,7 +2,6 @@
 import "./CurrentWeather.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CloudIcon from "@mui/icons-material/Cloud"; //delete later!
-import { Button } from "@mui/material";
 
 function CurrentWeather(): JSX.Element {
     return (
@@ -15,11 +14,11 @@ function CurrentWeather(): JSX.Element {
         </div>
         <div className="favorites">
           <FavoriteBorderIcon />
-          <Button>add to favorite</Button>
+          <button>add to favorite</button>
         </div>
       </div>
       <div className="description">
-        <h4>Clear sky - Warm and </h4>
+        <h2>Clear sky - Warm and </h2>
       </div>
       </div>
     );

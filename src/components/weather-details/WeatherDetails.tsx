@@ -5,7 +5,7 @@ function WeatherDetails(): JSX.Element {
   return (
     <div className="WeatherDetails">
       <SearchField />
-      <Location />ss
+      <Location />
     </div>
   );
 }
