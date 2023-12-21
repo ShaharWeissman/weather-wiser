@@ -10,12 +10,16 @@ function Navigation(): JSX.Element {
       <h2>Weather Task abra</h2>
       <img src={Logo} alt="Weather logo" className="weather-Logo" />
       <div className="Navigation">
-        <NavLink to="/home" >
+        <NavLink
+          to="/home"
+          className={({ isActive }) => (isActive ? "active-link" : "")}>
           <button>
             <HomeIcon>Home</HomeIcon>Home
           </button>
         </NavLink>
-        <NavLink to="/favorites">
+        <NavLink
+          to="/favorites"
+          className={({ isActive }) => (isActive ? "active-link" : "")}>
           <button>
             <FavoriteIcon />
             Favorites

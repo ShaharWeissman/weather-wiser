@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 10%;
+  padding: 4px 20%;
   background-color: #f8f8f0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   position: fixed;
@@ -17,6 +17,7 @@
   width: 100px;
   height: auto;
   margin-right: 60%;
+  margin-bottom: 5px;
 }
 
 .Navigation {
@@ -54,4 +55,13 @@
 .Navigation svg {
   margin-right: 5px;
   height: 1em; /* Adjust icon size */
+}
+.active-link button {
+  background-color: #507dac; /* Change to the desired pressed button color */
+  color: white; /* Change to the desired text color */
+  font-weight: bold; /* Optionally make the text bold */
+}
+
+.active-link button:hover {
+  background-color: #507dac; /* Keep the same color on hover */
 }

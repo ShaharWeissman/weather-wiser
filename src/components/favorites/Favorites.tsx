@@ -1,4 +1,3 @@
-import React from 'react';
 import "./Favorites.css";
 import { FavoritesMockData } from '../../services/ApiService';
 import FavoriteCard from './FavoriteCard';

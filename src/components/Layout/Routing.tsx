@@ -6,12 +6,10 @@ import Layout from "./Layout";
 function Routing(): JSX.Element {
   return (
     <Routes>
-      <Route path="/" element={<Layout/>}>
-
-     <Route index element={<WeatherDetails />} />
-      <Route path="home" element={<WeatherDetails />} />
-      <Route path="favorites" element={<Favorites />} />
-      
+      <Route path="/" element={<Layout />}>
+        <Route index element={<WeatherDetails />} />
+        <Route path="home" element={<WeatherDetails />} />
+        <Route path="favorites" element={<Favorites />} />
       </Route>
     </Routes>
   );
