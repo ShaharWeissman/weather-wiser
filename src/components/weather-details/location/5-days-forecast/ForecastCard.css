@@ -1,0 +1,45 @@
+.forecast-card {
+  position: relative;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  min-width: 150px;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../../../../assets/images/card-image.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.card-content {
+  position: relative;
+  text-align: center;
+  color: #031119;
+  z-index: 1;
+}
+
+.weather-day,
+.weather-temperature {
+  margin: 10px;
+}
+
+.weather-day {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.weather-temperature {
+  font-size: 1.25rem;
+}

@@ -1,41 +1,57 @@
 .Header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px; /* Adjust padding as needed */
-    background-color:#F8F8F0; /* Or any color that fits your app theme */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Optional: Adds a subtle shadow for depth */
-    position: fixed; /* Keeps the header at the top */
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100; /* Ensures header stays above other content */
-  }
-.Header h2 {
-    margin: 0; /* Remove default margin */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10%;
+  background-color: #f8f8f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  color: #072b41;
 }
 
 .weather-Logo {
-    width: 180px; /* Adjust this as needed */
-    height: 150px; /* Maintain aspect ratio */
+  width: 100px;
+  height: auto;
+  margin-right: 60%;
 }
 
 .Navigation {
-    display: flex;
+  display: flex;
+  align-items: center; /* Center items vertically */
+  gap: 5px;
+}
+.Navigation a {
+  text-decoration: none; /* Removes underline */
+  color: inherit; /* Optional: ensures the link color matches your design */
+}
+
+.Navigation a:active,
+.Navigation a:hover {
+  text-decoration: none; /* Optional: adds underline on hover for visual feedback */
 }
 
 .Navigation button {
-    margin-left: 10px;
-    padding: 10px 20px; /* Adjust padding as needed */
-    border: none;
-    background-color: #74a7de; /* Example button color */
-    color: rgb(0, 0, 0);
-    border-radius: 5px;
-    cursor: pointer;
-    width: 120px; 
-    height: 70px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  padding: 8px 10px;
+  border: none;
+  background-color: #74a7de;
+  color: #072b41;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .Navigation button:hover {
-    opacity: 0.8;
+  background-color: #507dac;
+}
+
+.Navigation svg {
+  margin-right: 5px;
+  height: 1em; /* Adjust icon size */
 }

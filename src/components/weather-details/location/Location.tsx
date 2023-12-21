@@ -5,7 +5,7 @@ import "./Location.css";
 
 function Location(): JSX.Element {
 return(
-<div className="container">
+<div className="weather-container">
 <CurrentWeather/>
 <WeatherForecast/>
 </div>

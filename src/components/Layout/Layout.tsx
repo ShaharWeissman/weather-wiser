@@ -1,4 +1,4 @@
-import WeatherDetails from "../weather-details/WeatherDetails";
+import { Outlet } from "react-router-dom";
 import "./Layout.css";
 import Navigation from "./Navigation";
 
@@ -7,7 +7,7 @@ function Layout(): JSX.Element {
   return (
     <div className="Layout">
    <Navigation/>
-   <WeatherDetails/>
+   <Outlet/>
    </div>
   );
 }

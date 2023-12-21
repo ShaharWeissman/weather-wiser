@@ -1,0 +1,40 @@
+.favorite-card {
+    position: relative;
+    border-radius: 12px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    /* You may want to set a min-width or width here to control the card size */
+    min-width: 200px; /* Example min-width */
+    height: auto; /* Height auto for content fitting */
+    margin-bottom: 20px;
+}
+
+.favorite-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  opacity: 0.2;  z-index: -1;
+}
+
+.favorite-card-content {
+  position: relative;
+  text-align: center;
+  color: #031119;
+  z-index: 1;
+  padding: 10px; /* Add padding for the text */
+}
+
+.favorite-weather-day,
+.favorite-weather-temperature,
+.favorite-weather-description {
+  margin: 5px 0; /* Spacing between text lines */
+  font-size: 1rem; /* Adjust font size as needed */
+}
+
+.favorite-weather-day {
+  font-weight: bold;
+}
