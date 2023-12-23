@@ -7,11 +7,11 @@ import "./Navigation.css";
 function Navigation(): JSX.Element {
   return (
     <header className="Header">
-      <h2>Weather Task abra</h2>
+      <h2>Abra Weather Task</h2>
       <img src={Logo} alt="Weather logo" className="weather-Logo" />
       <div className="Navigation">
         <NavLink
-          to="/home"
+          to="/"
           className={({ isActive }) => (isActive ? "active-link" : "")}>
           <button>
             <HomeIcon>Home</HomeIcon>Home

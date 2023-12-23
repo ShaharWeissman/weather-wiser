@@ -1,6 +1,6 @@
 import React from "react";
 import "./FavoriteCard.css";
-import { FavoritesData } from "../../services/ApiService";
+import { FavoritesData } from "../../http";
 import CardImage from "../../assets/images/card-image.jpg";
 
 function FavoriteCard({

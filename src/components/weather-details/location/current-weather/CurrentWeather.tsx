@@ -1,14 +1,18 @@
 import "./CurrentWeather.css";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import CloudIcon from "@mui/icons-material/Cloud"; //delete later!
+import { useAppSelector } from "../../../../store/store";
 
 function CurrentWeather(): JSX.Element {
+  const selectedCity = useAppSelector((state) => state.cities.selectedCity);
+  // use effect return tlv ,
+
   return (
     <div>
       <div className="current-weather">
         <div className="current-data">
           <CloudIcon color="primary" />
-          <p>Tel Aviv</p>
+          <p>{selectedCity?.LocalizedName}</p>
           <p>38 C°</p>
         </div>
         <div className="favorites">

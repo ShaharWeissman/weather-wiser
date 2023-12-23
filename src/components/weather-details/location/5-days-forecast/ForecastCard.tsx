@@ -1,5 +1,5 @@
 import './ForecastCard.css';
-import { WeatherDay } from '../../../../services/ApiService';
+import { WeatherDay } from '../../../../http';
 
 
 function ForecastCard({ day, temperature }: WeatherDay): JSX.Element {
