@@ -10,8 +10,14 @@ export const initialState: DailyForecastDetailsState = {
 
 export const fetchDailyForecastDetails = createAsyncThunk(
   "dailyForecastDetails/fetchDailyForecastDetails",
-  async (locationKey: string) => {
-    const dailyForecastDetails = await getDailyForecast(locationKey);
+  async ({
+    locationKey,
+    isMetric,
+  }: {
+    locationKey: string;
+    isMetric: boolean;
+  }) => {
+    const dailyForecastDetails = await getDailyForecast(locationKey, isMetric);
     return dailyForecastDetails;
   }
 );

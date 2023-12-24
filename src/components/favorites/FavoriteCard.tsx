@@ -1,23 +1,40 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import "./FavoriteCard.css";
-import { FavoritesData } from "../../http";
 import CardImage from "../../assets/images/card-image.jpg";
+import { City, LocationDetails } from "../../types";
+import { useAppSelector } from "../../store/store";
+import { getCurrentWeather } from "../../tests/mocks/api/service";
 
-function FavoriteCard({
-  city,
-  temperature,
-  description,
-}: FavoritesData): JSX.Element {
-  
+type Props = { city: City };
+
+function FavoriteCard({ city }: Props): JSX.Element {
+  const isMetric = useAppSelector((state) => state.cities.isMetric);
+  const [locationDetails, setLocationDetails] = useState<LocationDetails>();
+
+  useEffect(() => {
+    async function getLocationDetails() {
+      const locationDetails = await getCurrentWeather(city.Key);
+      setLocationDetails(locationDetails);
+    }
+    getLocationDetails();
+  }, []);
+
   return (
     <div className="favorite-card">
       <div
         className="favorite-background-image"
         style={{ backgroundImage: `url(${CardImage})` }}></div>
       <div className="favorite-card-content">
-        <h5 className="favorite-weather-day">{city}</h5>
-        <h6 className="favorite-weather-temperature">{temperature}</h6>
-        <p className="favorite-weather-description">{description}</p>
+        <h5 className="favorite-weather-day">{city.LocalizedName}</h5>
+        <h6 className="favorite-weather-temperature">
+          {
+            locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
+              ?.Value
+          }
+        </h6>
+        <p className="favorite-weather-description">
+          {locationDetails?.WeatherText}
+        </p>
       </div>
     </div>
   );

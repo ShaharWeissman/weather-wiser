@@ -72,7 +72,7 @@ export async function getCurrentWeather(locationKey: string) {
       LocalObservationDateTime: "2023-12-21T22:55:00+08:00",
       EpochTime: 1703170500,
       WeatherText: "Mostly clear",
-      WeatherIcon: 34,
+      WeatherIcon: 4,
       HasPrecipitation: false,
       PrecipitationType: null,
       IsDayTime: false,
@@ -127,176 +127,319 @@ export async function getCurrentWeather(locationKey: string) {
   );
 }
 
-export async function getDailyForecast(locationKey: string) {
+export async function getDailyForecast(locationKey: string, isMetric: boolean) {
+  console.log({ locationKey, isMetric });
+
   const forecastMockData: { [key: string]: DailyForecast[] } = {
-    "308526": [
-      {
-        Date: "2023-12-21T07:00:00+08:00",
-        EpochDate: 1703113200,
-        Temperature: {
-          Minimum: {
-            Value: 82.0,
-            Unit: "F",
-            UnitType: 18,
+    "308526": isMetric
+      ? [
+          {
+            Date: "2023-12-24T07:00:00+02:00",
+            EpochDate: 1703394000,
+            Temperature: {
+              Minimum: {
+                Value: 15.3,
+                Unit: "C",
+                UnitType: 17,
+              },
+              Maximum: {
+                Value: 20.3,
+                Unit: "C",
+                UnitType: 17,
+              },
+            },
+            Day: {
+              Icon: 18,
+              IconPhrase: "Rain",
+              HasPrecipitation: true,
+              PrecipitationType: "Rain",
+              PrecipitationIntensity: "Light",
+            },
+            Night: {
+              Icon: 35,
+              IconPhrase: "Partly cloudy",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&unit=c&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&unit=c&lang=en-us",
           },
-          Maximum: {
-            Value: 86.0,
-            Unit: "F",
-            UnitType: 18,
+          {
+            Date: "2023-12-25T07:00:00+02:00",
+            EpochDate: 1703480400,
+            Temperature: {
+              Minimum: {
+                Value: 12.9,
+                Unit: "C",
+                UnitType: 17,
+              },
+              Maximum: {
+                Value: 21.6,
+                Unit: "C",
+                UnitType: 17,
+              },
+            },
+            Day: {
+              Icon: 2,
+              IconPhrase: "Mostly sunny",
+              HasPrecipitation: false,
+            },
+            Night: {
+              Icon: 33,
+              IconPhrase: "Clear",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&unit=c&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&unit=c&lang=en-us",
           },
-        },
-        Day: {
-          Icon: 3,
-          IconPhrase: "Partly sunny",
-          HasPrecipitation: true,
-          PrecipitationType: "Rain",
-          PrecipitationIntensity: "Light",
-        },
-        Night: {
-          Icon: 35,
-          IconPhrase: "Partly cloudy",
-          HasPrecipitation: false,
-        },
-        Sources: ["AccuWeather"],
-        MobileLink:
-          "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=1&lang=en-us",
-        Link: "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=1&lang=en-us",
-      },
-      {
-        Date: "2023-12-22T07:00:00+08:00",
-        EpochDate: 1703199600,
-        Temperature: {
-          Minimum: {
-            Value: 80.0,
-            Unit: "F",
-            UnitType: 18,
+          {
+            Date: "2023-12-26T07:00:00+02:00",
+            EpochDate: 1703566800,
+            Temperature: {
+              Minimum: {
+                Value: 15.4,
+                Unit: "C",
+                UnitType: 17,
+              },
+              Maximum: {
+                Value: 24.0,
+                Unit: "C",
+                UnitType: 17,
+              },
+            },
+            Day: {
+              Icon: 1,
+              IconPhrase: "Sunny",
+              HasPrecipitation: false,
+            },
+            Night: {
+              Icon: 33,
+              IconPhrase: "Clear",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&unit=c&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&unit=c&lang=en-us",
           },
-          Maximum: {
-            Value: 86.0,
-            Unit: "F",
-            UnitType: 18,
+          {
+            Date: "2023-12-27T07:00:00+02:00",
+            EpochDate: 1703653200,
+            Temperature: {
+              Minimum: {
+                Value: 15.1,
+                Unit: "C",
+                UnitType: 17,
+              },
+              Maximum: {
+                Value: 22.3,
+                Unit: "C",
+                UnitType: 17,
+              },
+            },
+            Day: {
+              Icon: 5,
+              IconPhrase: "Hazy sunshine",
+              HasPrecipitation: false,
+            },
+            Night: {
+              Icon: 36,
+              IconPhrase: "Intermittent clouds",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&unit=c&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&unit=c&lang=en-us",
           },
-        },
-        Day: {
-          Icon: 4,
-          IconPhrase: "Intermittent clouds",
-          HasPrecipitation: false,
-        },
-        Night: {
-          Icon: 40,
-          IconPhrase: "Mostly cloudy w/ showers",
-          HasPrecipitation: true,
-          PrecipitationType: "Rain",
-          PrecipitationIntensity: "Light",
-        },
-        Sources: ["AccuWeather"],
-        MobileLink:
-          "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=2&lang=en-us",
-        Link: "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=2&lang=en-us",
-      },
-      {
-        Date: "2023-12-23T07:00:00+08:00",
-        EpochDate: 1703286000,
-        Temperature: {
-          Minimum: {
-            Value: 81.0,
-            Unit: "F",
-            UnitType: 18,
+          {
+            Date: "2023-12-28T07:00:00+02:00",
+            EpochDate: 1703739600,
+            Temperature: {
+              Minimum: {
+                Value: 14.8,
+                Unit: "C",
+                UnitType: 17,
+              },
+              Maximum: {
+                Value: 22.5,
+                Unit: "C",
+                UnitType: 17,
+              },
+            },
+            Day: {
+              Icon: 5,
+              IconPhrase: "Hazy sunshine",
+              HasPrecipitation: false,
+            },
+            Night: {
+              Icon: 33,
+              IconPhrase: "Clear",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&unit=c&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&unit=c&lang=en-us",
           },
-          Maximum: {
-            Value: 86.0,
-            Unit: "F",
-            UnitType: 18,
+        ]
+      : [
+          {
+            Date: "2023-12-24T07:00:00+02:00",
+            EpochDate: 1703394000,
+            Temperature: {
+              Minimum: {
+                Value: 57.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+              Maximum: {
+                Value: 68.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+            },
+            Day: {
+              Icon: 18,
+              IconPhrase: "Rain",
+              HasPrecipitation: true,
+              PrecipitationType: "Rain",
+              PrecipitationIntensity: "Light",
+            },
+            Night: {
+              Icon: 35,
+              IconPhrase: "Partly cloudy",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=1&lang=en-us",
           },
-        },
-        Day: {
-          Icon: 12,
-          IconPhrase: "Showers",
-          HasPrecipitation: true,
-          PrecipitationType: "Rain",
-          PrecipitationIntensity: "Light",
-        },
-        Night: {
-          Icon: 40,
-          IconPhrase: "Mostly cloudy w/ showers",
-          HasPrecipitation: true,
-          PrecipitationType: "Rain",
-          PrecipitationIntensity: "Light",
-        },
-        Sources: ["AccuWeather"],
-        MobileLink:
-          "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=3&lang=en-us",
-        Link: "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=3&lang=en-us",
-      },
-      {
-        Date: "2023-12-24T07:00:00+08:00",
-        EpochDate: 1703372400,
-        Temperature: {
-          Minimum: {
-            Value: 81.0,
-            Unit: "F",
-            UnitType: 18,
+          {
+            Date: "2023-12-25T07:00:00+02:00",
+            EpochDate: 1703480400,
+            Temperature: {
+              Minimum: {
+                Value: 55.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+              Maximum: {
+                Value: 71.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+            },
+            Day: {
+              Icon: 2,
+              IconPhrase: "Mostly sunny",
+              HasPrecipitation: false,
+            },
+            Night: {
+              Icon: 33,
+              IconPhrase: "Clear",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=2&lang=en-us",
           },
-          Maximum: {
-            Value: 84.0,
-            Unit: "F",
-            UnitType: 18,
+          {
+            Date: "2023-12-26T07:00:00+02:00",
+            EpochDate: 1703566800,
+            Temperature: {
+              Minimum: {
+                Value: 60.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+              Maximum: {
+                Value: 75.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+            },
+            Day: {
+              Icon: 1,
+              IconPhrase: "Sunny",
+              HasPrecipitation: false,
+            },
+            Night: {
+              Icon: 33,
+              IconPhrase: "Clear",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=3&lang=en-us",
           },
-        },
-        Day: {
-          Icon: 7,
-          IconPhrase: "Cloudy",
-          HasPrecipitation: true,
-          PrecipitationType: "Rain",
-          PrecipitationIntensity: "Light",
-        },
-        Night: {
-          Icon: 12,
-          IconPhrase: "Showers",
-          HasPrecipitation: true,
-          PrecipitationType: "Rain",
-          PrecipitationIntensity: "Light",
-        },
-        Sources: ["AccuWeather"],
-        MobileLink:
-          "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=4&lang=en-us",
-        Link: "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=4&lang=en-us",
-      },
-      {
-        Date: "2023-12-25T07:00:00+08:00",
-        EpochDate: 1703458800,
-        Temperature: {
-          Minimum: {
-            Value: 81.0,
-            Unit: "F",
-            UnitType: 18,
+          {
+            Date: "2023-12-27T07:00:00+02:00",
+            EpochDate: 1703653200,
+            Temperature: {
+              Minimum: {
+                Value: 59.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+              Maximum: {
+                Value: 74.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+            },
+            Day: {
+              Icon: 5,
+              IconPhrase: "Hazy sunshine",
+              HasPrecipitation: false,
+            },
+            Night: {
+              Icon: 36,
+              IconPhrase: "Intermittent clouds",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=4&lang=en-us",
           },
-          Maximum: {
-            Value: 85.0,
-            Unit: "F",
-            UnitType: 18,
+          {
+            Date: "2023-12-28T07:00:00+02:00",
+            EpochDate: 1703739600,
+            Temperature: {
+              Minimum: {
+                Value: 59.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+              Maximum: {
+                Value: 73.0,
+                Unit: "F",
+                UnitType: 18,
+              },
+            },
+            Day: {
+              Icon: 5,
+              IconPhrase: "Hazy sunshine",
+              HasPrecipitation: false,
+            },
+            Night: {
+              Icon: 33,
+              IconPhrase: "Clear",
+              HasPrecipitation: false,
+            },
+            Sources: ["AccuWeather"],
+            MobileLink:
+              "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&lang=en-us",
+            Link: "http://www.accuweather.com/en/il/tel-aviv/215854/daily-weather-forecast/215854?day=5&lang=en-us",
           },
-        },
-        Day: {
-          Icon: 12,
-          IconPhrase: "Showers",
-          HasPrecipitation: true,
-          PrecipitationType: "Rain",
-          PrecipitationIntensity: "Moderate",
-        },
-        Night: {
-          Icon: 35,
-          IconPhrase: "Partly cloudy",
-          HasPrecipitation: true,
-          PrecipitationType: "Rain",
-          PrecipitationIntensity: "Light",
-        },
-        Sources: ["AccuWeather"],
-        MobileLink:
-          "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=5&lang=en-us",
-        Link: "http://www.accuweather.com/en/ph/madridejos/262718/daily-weather-forecast/262718?day=5&lang=en-us",
-      },
-    ],
+        ],
   };
 
   return (
@@ -305,3 +448,96 @@ export async function getDailyForecast(locationKey: string) {
     }
   );
 }
+
+export const mockFavorites = [
+  {
+    Version: 1,
+    Key: "308526",
+    Type: "City",
+    Rank: 10,
+    LocalizedName: "Madrid",
+    Country: {
+      ID: "ES",
+      LocalizedName: "Spain",
+    },
+    AdministrativeArea: {
+      ID: "MD",
+      LocalizedName: "Madrid",
+    },
+  },
+  {
+    Version: 1,
+    Key: "308526",
+    Type: "City",
+    Rank: 10,
+    LocalizedName: "Madrid",
+    Country: {
+      ID: "ES",
+      LocalizedName: "Spain",
+    },
+    AdministrativeArea: {
+      ID: "MD",
+      LocalizedName: "Madrid",
+    },
+  },
+  {
+    Version: 1,
+    Key: "308526",
+    Type: "City",
+    Rank: 10,
+    LocalizedName: "Madrid",
+    Country: {
+      ID: "ES",
+      LocalizedName: "Spain",
+    },
+    AdministrativeArea: {
+      ID: "MD",
+      LocalizedName: "Madrid",
+    },
+  },
+  {
+    Version: 1,
+    Key: "308526",
+    Type: "City",
+    Rank: 10,
+    LocalizedName: "Madrid",
+    Country: {
+      ID: "ES",
+      LocalizedName: "Spain",
+    },
+    AdministrativeArea: {
+      ID: "MD",
+      LocalizedName: "Madrid",
+    },
+  },
+  {
+    Version: 1,
+    Key: "308526",
+    Type: "City",
+    Rank: 10,
+    LocalizedName: "Madrid",
+    Country: {
+      ID: "ES",
+      LocalizedName: "Spain",
+    },
+    AdministrativeArea: {
+      ID: "MD",
+      LocalizedName: "Madrid",
+    },
+  },
+  {
+    Version: 1,
+    Key: "308526",
+    Type: "City",
+    Rank: 10,
+    LocalizedName: "Madrid",
+    Country: {
+      ID: "ES",
+      LocalizedName: "Spain",
+    },
+    AdministrativeArea: {
+      ID: "MD",
+      LocalizedName: "Madrid",
+    },
+  },
+];

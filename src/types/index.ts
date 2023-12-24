@@ -19,6 +19,8 @@ export interface CitiesState {
   selectedCity: City | null;
   loading: boolean;
   error: string | null;
+  isMetric: boolean;
+  favorites: City[];
 }
 
 export interface LocationDetailsState {
