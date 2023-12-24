@@ -2,6 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CitiesState } from "../types";
 import { cityLookup } from "../tests/mocks/api/service";
 
+const initialState: CitiesState = {
+  cities: [],
+  selectedCity: null,
+  loading: false,
+  error: null,
+};
+
 export const fetchCitiesData = createAsyncThunk(
   "cities/fetchCitiesData",
   async (cityStr: string) => {
@@ -9,13 +16,6 @@ export const fetchCitiesData = createAsyncThunk(
     return cities;
   }
 );
-
-const initialState: CitiesState = {
-  cities: [],
-  selectedCity: null,
-  loading: false,
-  error: null,
-};
 
 const citiesSlice = createSlice({
   name: "cities",
@@ -28,6 +28,7 @@ const citiesSlice = createSlice({
       state.selectedCity = action.payload;
     },
   },
+
   extraReducers: (builder) => {
     builder.addCase(fetchCitiesData.rejected, (state, action) => {
       state.error = action.error.message || null;

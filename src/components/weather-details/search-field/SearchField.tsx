@@ -1,11 +1,11 @@
 import React from "react";
 import { Autocomplete, TextField } from "@mui/material";
-// import { fetchCitiesData, setSelectedCity } from '../../../store/reducer';
 import { RootState } from "../../../store/rootState";
 import { City } from "../../../types";
 import { fetchCitiesData, setSelectedCity } from "../../../store/citySlice";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
 
+import "./SearchField.css";
 // Debounce function in TypeScript
 const debounce = <F extends (...args: never[]) => void>(
   func: F,

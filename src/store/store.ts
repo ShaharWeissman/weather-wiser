@@ -1,20 +1,25 @@
 import { configureStore } from "@reduxjs/toolkit";
 import CitiesSlice from "./citySlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import { LocationDetailsSlice } from "./locationDetailsSlice";
+import { DailyForecastDetailsSlice } from "./DailyForecastDetailsSlice";
 
 export const store = configureStore({
   reducer: {
     cities: CitiesSlice.reducer,
+    locationDetails: LocationDetailsSlice.reducer,
+    dailyForecastDetails: DailyForecastDetailsSlice.reducer,
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+//customizations for typescript
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const { setSelectedCity } = CitiesSlice.actions;
 
+//define and export the types
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-// אין פה לוגיקה מורכבת ולכן לא צריך סלייסים . צריך רק אחד
-// סלייס נפרד מוסיף מורכבות מאוד גדולה
-//אפשר פשוט רידוסר אחד !
+export const { setSelectedCity } = CitiesSlice.actions;
+export const { setLocationDetails } = LocationDetailsSlice.actions;
+export const { setDailyForecastDetails } = DailyForecastDetailsSlice.actions;

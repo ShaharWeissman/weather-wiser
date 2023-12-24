@@ -222,7 +222,8 @@ export const state = {
       },
     ],
   },
-  favorites: [ {
+  favorites: [
+    {
       city: {
         Version: 1,
         Key: "308526",
@@ -263,5 +264,5 @@ export const state = {
         Link: "http://www.accuweather.com/en/ph/madridejos/262718/current-weather/262718?lang=en-us",
       },
     },
-  }, // we need the KEY for the city and DATA for them! when we open favorite = name of city: once button fvaorite = we save the key ,
-];
+  ], // we need the KEY for the city and DATA for them! when we open favorite = name of city: once button fvaorite = we save the key ,
+};
