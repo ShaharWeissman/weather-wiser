@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getDailyForecast } from "../tests/mocks/api/service";
-import { DailyForecastDetailsState } from "../types";
+import { getDailyForecast } from "../../tests/mocks/api/service";
+import { DailyForecastDetailsState } from "../../types";
 
 export const initialState: DailyForecastDetailsState = {
   dailyForecastDetails: [],

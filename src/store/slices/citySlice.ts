@@ -1,8 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CitiesState } from "../types";
-import { cityLookup, mockFavorites } from "../tests/mocks/api/service";
-
-const favorites = /*import.meta.NODE_ENV==='dev' ? [...]:[]*/ mockFavorites;
+import { CitiesState } from "../../types";
+import { cityLookup } from "../../tests/mocks/api/service";
 
 const initialState: CitiesState = {
   cities: [],
@@ -10,7 +8,7 @@ const initialState: CitiesState = {
   loading: false,
   error: null,
   isMetric: true,
-  favorites,
+  favorites: [],
 };
 
 export const fetchCitiesData = createAsyncThunk(
@@ -34,9 +32,21 @@ const citiesSlice = createSlice({
     toggleMetric: (state) => {
       state.isMetric = !state.isMetric;
     },
+    toggleFavorite: (state, action) => {
+      // action is City we check state.favorites if it includes the city
+      // if it does we remove it from the array
+      // if it doesn't we add it to the array
+      const city = action.payload;
+      const index = state.favorites.findIndex(
+        (favorite) => favorite.Key === city.Key
+      );
+      if (index === -1) {
+        state.favorites.push(city);
+      } else {
+        state.favorites.splice(index, 1);
+      }
+    },
   },
-  //toggleMetric(true) //action needed
-  //toggleMetric() //no action
   extraReducers: (builder) => {
     builder.addCase(fetchCitiesData.rejected, (state, action) => {
       state.error = action.error.message || null;
@@ -51,5 +61,6 @@ const citiesSlice = createSlice({
   },
 });
 
-export const { setCities, setSelectedCity } = citiesSlice.actions;
+export const { setCities, setSelectedCity, toggleMetric, toggleFavorite } =
+  citiesSlice.actions;
 export default citiesSlice;

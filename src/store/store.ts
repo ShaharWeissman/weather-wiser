@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import CitiesSlice from "./citySlice";
+import CitiesSlice from "./slices/citySlice";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { LocationDetailsSlice } from "./locationDetailsSlice";
-import { DailyForecastDetailsSlice } from "./DailyForecastDetailsSlice";
+import { LocationDetailsSlice } from "./slices/locationDetailsSlice";
+import { DailyForecastDetailsSlice } from "./slices/dailyForecastDetailsSlice";
 
 export const store = configureStore({
   reducer: {

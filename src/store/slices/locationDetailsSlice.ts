@@ -1,5 +1,5 @@
-import { LocationDetailsState } from "../types";
-import { getCurrentWeather } from "../tests/mocks/api/service";
+import { LocationDetailsState } from "../../types";
+import { getCurrentWeather } from "../../tests/mocks/api/service";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const initialState: LocationDetailsState = {
