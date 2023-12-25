@@ -90,3 +90,20 @@ export interface DailyForecastDetailsState {
   loading: boolean;
   error: string | null;
 }
+
+export interface ForecastResponse {
+  Headline: Headline;
+  DailyForecasts: DailyForecast[];
+}
+
+export interface Headline {
+  EffectiveDate: Date;
+  EffectiveEpochDate: number;
+  Severity: number;
+  Text: string;
+  Category: string;
+  EndDate: Date;
+  EndEpochDate: number;
+  MobileLink: string;
+  Link: string;
+}

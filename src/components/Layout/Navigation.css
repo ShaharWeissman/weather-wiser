@@ -12,7 +12,9 @@
   z-index: 100;
   color: #072b41;
 }
-
+h2 {
+  color: #072b41;
+}
 .weather-Logo {
   width: 100px;
   height: auto;

@@ -12,3 +12,25 @@ function Layout(): JSX.Element {
 }
 
 export default Layout;
+
+// function Layout(): JSX.Element {
+//   const isDarkMode = useAppSelector(state => state.yourReducer.isDarkMode);
+
+//   // Create a theme instance
+//   const theme = createTheme({
+//     palette: {
+//       mode: isDarkMode ? 'dark' : 'light',
+//     },
+//   });
+
+//   return (
+//     <ThemeProvider theme={theme}>
+//       <div className="Layout">
+//         <Navigation />
+//         <Outlet />
+//       </div>
+//     </ThemeProvider>
+//   );
+// }
+
+// export default Layout;

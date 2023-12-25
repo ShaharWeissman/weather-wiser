@@ -4,6 +4,7 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 
 import {
   fetchCitiesData,
+  fetchGeoCoordinates,
   setSelectedCity,
   toggleFavorite,
 } from "../../../../store/slices/citySlice";
@@ -42,6 +43,20 @@ function CurrentWeather(): JSX.Element {
   }, []);
 
   useEffect(() => {
+    if (!selectedCity) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      dispatch(fetchGeoCoordinates())
+        .then(() => {
+          // If the geolocation fetch is successful, the response will be handled here
+        })
+        .catch(() => {
+          // If there is an error or the user denies permission, fetch default city
+          dispatch(fetchCitiesData(DEFAULT_CITY_SEARCH_TEXT));
+        });
+    }
+  }, [dispatch, selectedCity]);
+
+  useEffect(() => {
     if (selectedCity?.Key) {
       dispatch(fetchLocationDetails(selectedCity.Key));
     } else {
@@ -63,17 +78,20 @@ function CurrentWeather(): JSX.Element {
     <div>
       <div className="current-weather">
         <div className="current-data">
-          <p>{selectedCity?.LocalizedName}</p>
-          <img src={weatherIconUrl} alt="icon" />
-          <p>
-            {
-              locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
-                ?.Value
-            }
-            &nbsp;{isMetric ? "C" : "F"}°
-          </p>
-        </div>
+          <div className="weather-header">Current Weather</div>
 
+          <p>{selectedCity?.LocalizedName}</p>
+          <div className="weather-icon-temp">
+            <img src={weatherIconUrl} alt="icon" className="icon-weather" />
+            <p>
+              {
+                locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
+                  ?.Value
+              }
+              &nbsp;{isMetric ? "C" : "F"}°
+            </p>
+          </div>
+        </div>
         <div className="favorites">
           <button
             onClick={toggleFavoriteHandler}

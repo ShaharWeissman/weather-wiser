@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CitiesState } from "../../types";
-import { cityLookup } from "../../tests/mocks/api/service";
+import { CitiesState, City } from "../../types";
+import { cityLookup, getGeoLocation } from "../../http";
+import notifyService from "../../utils/NotifyMessage";
+// import notifyService from "../../utils/NotifyMessage";
+// import { cityLookup } from "../../tests/mocks/api/service";
 
 const initialState: CitiesState = {
   cities: [],
@@ -11,9 +14,41 @@ const initialState: CitiesState = {
   favorites: [],
 };
 
+export const fetchGeoCoordinates = createAsyncThunk(
+  "cities/fetchGeoCoordinates",
+  async (_, { dispatch }) => {
+    return new Promise<City>((resolve, reject) => {
+      if (!navigator.geolocation) {
+        notifyService.error("GPS location is not supported by this browser");
+        return reject(new Error("Geolocation not supported"));
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          console.log(`${lat} ${lon}`);
+          try {
+            const weatherGeoData = await getGeoLocation(lat, lon);
+            dispatch(setSelectedCity(weatherGeoData));
+            resolve(weatherGeoData);
+          } catch (error) {
+            notifyService.error("Error fetching location data");
+            reject(new Error("Error fetching location data"));
+          }
+        },
+        () => {
+          notifyService.error("Geolocation permission denied");
+          reject(new Error("Geolocation permission denied"));
+        }
+      );
+    });
+  }
+);
+
 export const fetchCitiesData = createAsyncThunk(
   "cities/fetchCitiesData",
-  async (cityStr: string) => {
+  async (cityStr: string): Promise<City[]> => {
     const cities = await cityLookup(cityStr);
     return cities;
   }

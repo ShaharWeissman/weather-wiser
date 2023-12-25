@@ -9,7 +9,8 @@ import {
 import { useAppDispatch, useAppSelector } from "../../../store/store";
 
 import "./SearchField.css";
-// Debounce function in TypeScript
+import notifyService from "../../../utils/NotifyMessage";
+
 const debounce = <F extends (...args: never[]) => void>(
   func: F,
   delay: number
@@ -29,7 +30,15 @@ function SearchField(): JSX.Element {
 
   const handleInputChange = debounce((_: unknown, cityStr: string) => {
     console.log(`handleInputChange:`, { cityStr });
-    dispatch(fetchCitiesData(cityStr));
+    const isEnglish = /^[A-Za-z ]+$/;
+    if (!isEnglish.test(cityStr)) {
+      console.log("Error - Only English letters allowed!");
+      notifyService.error("Please use only English characters");
+      return;
+    }
+    if (cityStr?.length) {
+      dispatch(fetchCitiesData(cityStr));
+    }
   }, 500);
 
   const handleCitySelect = (
@@ -44,7 +53,7 @@ function SearchField(): JSX.Element {
     <div className="SearchField">
       <Autocomplete
         id="city-select"
-        options={cities}
+        options={cities || []}
         getOptionLabel={(option) => option.LocalizedName}
         getOptionKey={(option) => option.Key}
         onInputChange={handleInputChange}
