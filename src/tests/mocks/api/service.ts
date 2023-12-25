@@ -29,39 +29,61 @@ export const FavoritesMockData: FavoritesData[] = [
 ];
 
 export async function cityLookup(cityStr = "madrid") {
-  console.log(cityStr);
-  return [
-    {
-      Version: 1,
-      Key: "308526",
-      Type: "City",
-      Rank: 10,
-      LocalizedName: "Madrid",
-      Country: {
-        ID: "ES",
-        LocalizedName: "Spain",
-      },
-      AdministrativeArea: {
-        ID: "MD",
-        LocalizedName: "Madrid",
-      },
-    },
-    {
-      Version: 1,
-      Key: "108179",
-      Type: "City",
-      Rank: 55,
-      LocalizedName: "Madrid",
-      Country: {
-        ID: "CO",
-        LocalizedName: "Colombia",
-      },
-      AdministrativeArea: {
-        ID: "CUN",
-        LocalizedName: "Cundinamarca",
-      },
-    },
-  ];
+  switch (true) {
+    case "tel-aviv".includes(cityStr.toLowerCase()):
+      return [
+        {
+          Version: 1,
+          Key: "215854",
+          Type: "City",
+          Rank: 31,
+          LocalizedName: "Tel Aviv",
+          Country: {
+            ID: "IL",
+            LocalizedName: "Israel",
+          },
+          AdministrativeArea: {
+            ID: "TA",
+            LocalizedName: "Tel Aviv",
+          },
+        },
+      ];
+    case "madrid".includes(cityStr.toLowerCase()):
+      return [
+        {
+          Version: 1,
+          Key: "308526",
+          Type: "City",
+          Rank: 10,
+          LocalizedName: "Madrid",
+          Country: {
+            ID: "ES",
+            LocalizedName: "Spain",
+          },
+          AdministrativeArea: {
+            ID: "MD",
+            LocalizedName: "Madrid",
+          },
+        },
+        {
+          Version: 1,
+          Key: "108179",
+          Type: "City",
+          Rank: 55,
+          LocalizedName: "Madrid",
+          Country: {
+            ID: "CO",
+            LocalizedName: "Colombia",
+          },
+          AdministrativeArea: {
+            ID: "CUN",
+            LocalizedName: "Cundinamarca",
+          },
+        },
+      ];
+    default:
+      return [];
+  }
 }
 
 export async function getCurrentWeather(locationKey: string) {
@@ -120,11 +142,7 @@ export async function getCurrentWeather(locationKey: string) {
     },
   };
 
-  return (
-    mockLocationDetails[locationKey] || {
-      WeatherText: "Data not found",
-    }
-  );
+  return mockLocationDetails[locationKey] || null;
 }
 
 export async function getDailyForecast(locationKey: string, isMetric: boolean) {
@@ -443,7 +461,7 @@ export async function getDailyForecast(locationKey: string, isMetric: boolean) {
   };
 
   return (
-    forecastMockData[locationKey] || {
+    forecastMockData["308526"] || {
       DailyForecasts: [],
     }
   );
