@@ -2,7 +2,10 @@ import React from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { RootState } from "../../../store/rootState";
 import { City } from "../../../types";
-import { fetchCitiesData, setSelectedCity } from "../../../store/citySlice";
+import {
+  fetchCitiesData,
+  setSelectedCity,
+} from "../../../store/slices/citySlice";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
 
 import "./SearchField.css";
@@ -30,7 +33,7 @@ function SearchField(): JSX.Element {
   }, 500);
 
   const handleCitySelect = (
-    event: React.SyntheticEvent<Element, Event>,
+    _: React.SyntheticEvent<Element, Event>,
     value: City | null
   ) => {
     dispatch(setSelectedCity(value));

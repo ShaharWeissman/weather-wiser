@@ -22,7 +22,7 @@ p {
   align-items: center;
 }
 
-.favorites Button {
+.favorites button {
   display: flex;
   gap: 5px;
   align-items: center;
@@ -37,4 +37,9 @@ p {
 }
 .favorites button:hover {
   background-color: #507dac;
+}
+
+.favorites .favorite-active {
+  background-color: #db8787;
+  color: #411007;
 }

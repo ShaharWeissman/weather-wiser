@@ -2,7 +2,7 @@ import "./WeatherForecast.css"; // Make sure the path is correct
 import ForecastCard from "./ForecastCard";
 import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { useEffect } from "react";
-import { fetchDailyForecastDetails } from "../../../../store/DailyForecastDetailsSlice";
+import { fetchDailyForecastDetails } from "../../../../store/slices/dailyForecastDetailsSlice";
 
 function WeatherForecast(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.cities.selectedCity);
@@ -18,19 +18,21 @@ function WeatherForecast(): JSX.Element {
         fetchDailyForecastDetails({ locationKey: selectedCity?.Key, isMetric })
       );
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity]);
 
   return (
     <div className="weather-forecast">
-      {dailyForecastDetails?.map((weather, index: number) => (
-        <ForecastCard
-          key={index}
-          day={new Date(weather?.Date + "").toLocaleDateString("en-US", {
-            weekday: "short",
-          })}
-          temperature={weather.Temperature.Maximum.Value}
-        />
-      ))}
+      {dailyForecastDetails?.[0]?.Date &&
+        dailyForecastDetails?.map((weather, index: number) => (
+          <ForecastCard
+            key={index}
+            day={new Date(weather?.Date + "").toLocaleDateString("en-US", {
+              weekday: "short",
+            })}
+            temperature={weather.Temperature.Maximum.Value}
+          />
+        ))}
     </div>
   );
 }

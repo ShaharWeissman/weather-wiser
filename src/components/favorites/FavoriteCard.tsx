@@ -17,6 +17,7 @@ function FavoriteCard({ city }: Props): JSX.Element {
       setLocationDetails(locationDetails);
     }
     getLocationDetails();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -31,6 +32,7 @@ function FavoriteCard({ city }: Props): JSX.Element {
             locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
               ?.Value
           }
+          &nbsp;{isMetric ? "C" : "F"}°
         </h6>
         <p className="favorite-weather-description">
           {locationDetails?.WeatherText}
