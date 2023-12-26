@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import WeatherDetails from "./components/weather-details/WeatherDetails";
 import Favorites from "./components/favorites/Favorites";
-import Layout from "./components/layout";
+import Layout from "./components/Layout";
 import { ThemeProvider, createTheme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useAppSelector } from "./store/store";
