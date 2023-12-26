@@ -1,10 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import WeatherDetails from "../weather-details/WeatherDetails";
-import Favorites from "../favorites/Favorites";
-import Layout from "./Layout";
+import WeatherDetails from "./components/weather-details/WeatherDetails";
+import Favorites from "./components/favorites/Favorites";
+import Layout from "./components/layout/Layout";
 import { ThemeProvider, createTheme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
-import { useAppSelector } from "../../store/store";
+import { useAppSelector } from "./store/store";
 
 function Routing(): JSX.Element {
   const isDarkTheme = useAppSelector((state) => state.cities.isDarkTheme);
