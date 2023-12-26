@@ -11,7 +11,7 @@ import {
 import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { useEffect } from "react";
 import { fetchLocationDetails } from "../../../../store/slices/locationDetailsSlice";
-import { DEFAULT_CITY_SEARCH_TEXT } from "../../../config/consts";
+import { DEFAULT_CITY_SEARCH_TEXT } from "../../../../config/consts";
 
 function formatIconNumber(number: number): string {
   if (number < 10) {
@@ -83,13 +83,13 @@ function CurrentWeather(): JSX.Element {
           <p>{selectedCity?.LocalizedName}</p>
           <div className="weather-icon-temp">
             <img src={weatherIconUrl} alt="icon" className="icon-weather" />
-            <p>
+            <div className="temp-weather">
               {
                 locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
                   ?.Value
               }
               &nbsp;{isMetric ? "C" : "F"}°
-            </p>
+            </div>
           </div>
         </div>
         <div className="favorites">
@@ -109,9 +109,7 @@ function CurrentWeather(): JSX.Element {
           </button>
         </div>
       </div>
-      <div className="description">
-        <h2>{locationDetails?.WeatherText}</h2>
-      </div>
+      <div className="description">{locationDetails?.WeatherText}</div>
     </div>
   );
 }

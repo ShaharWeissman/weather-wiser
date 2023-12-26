@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CitiesState, City } from "../../types";
-import { cityLookup, getGeoLocation } from "../../http";
+import HttpService from "../../http";
 import notifyService from "../../utils/NotifyMessage";
 // import notifyService from "../../utils/NotifyMessage";
 // import { cityLookup } from "../../tests/mocks/api/service";
@@ -12,6 +12,7 @@ const initialState: CitiesState = {
   error: null,
   isMetric: true,
   favorites: [],
+  isDarkTheme: false,
 };
 
 export const fetchGeoCoordinates = createAsyncThunk(
@@ -29,7 +30,7 @@ export const fetchGeoCoordinates = createAsyncThunk(
           const lon = position.coords.longitude;
           console.log(`${lat} ${lon}`);
           try {
-            const weatherGeoData = await getGeoLocation(lat, lon);
+            const weatherGeoData = await HttpService.getGeoLocation(lat, lon);
             dispatch(setSelectedCity(weatherGeoData));
             resolve(weatherGeoData);
           } catch (error) {
@@ -49,7 +50,7 @@ export const fetchGeoCoordinates = createAsyncThunk(
 export const fetchCitiesData = createAsyncThunk(
   "cities/fetchCitiesData",
   async (cityStr: string): Promise<City[]> => {
-    const cities = await cityLookup(cityStr);
+    const cities = await HttpService.cityLookup(cityStr);
     return cities;
   }
 );
@@ -81,6 +82,21 @@ const citiesSlice = createSlice({
         state.favorites.splice(index, 1);
       }
     },
+    toggleDarkTheme: (state) => {
+      state.isDarkTheme = !state.isDarkTheme;
+      document.documentElement.style.setProperty(
+        "--font-color",
+        state.isDarkTheme ? "#4c4f4d" : "#072b41"
+      );
+      document.documentElement.style.setProperty(
+        "--bg-img-col1",
+        state.isDarkTheme ? "lightblue" : "black"
+      );
+      document.documentElement.style.setProperty(
+        "--bg-img-col1",
+        state.isDarkTheme ? "white" : "grey"
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCitiesData.rejected, (state, action) => {
@@ -96,6 +112,11 @@ const citiesSlice = createSlice({
   },
 });
 
-export const { setCities, setSelectedCity, toggleMetric, toggleFavorite } =
-  citiesSlice.actions;
+export const {
+  setCities,
+  setSelectedCity,
+  toggleMetric,
+  toggleFavorite,
+  toggleDarkTheme,
+} = citiesSlice.actions;
 export default citiesSlice;

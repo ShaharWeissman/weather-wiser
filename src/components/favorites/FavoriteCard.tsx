@@ -3,7 +3,7 @@ import "./FavoriteCard.css";
 import CardImage from "../../assets/images/card-image.jpg";
 import { City, LocationDetails } from "../../types";
 import { useAppDispatch, useAppSelector } from "../../store/store";
-import { getCurrentWeather } from "../../http";
+import HttpService from "../../http";
 import { setSelectedCity } from "../../store/slices/citySlice";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,7 @@ function FavoriteCard({ city }: Props): JSX.Element {
 
   useEffect(() => {
     async function getLocationDetails() {
-      const locationDetails = await getCurrentWeather(city.Key);
+      const locationDetails = await HttpService.getCurrentWeather(city.Key);
       setLocationDetails(locationDetails[0]);
     }
     getLocationDetails();

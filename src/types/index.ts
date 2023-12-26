@@ -21,6 +21,7 @@ export interface CitiesState {
   error: string | null;
   isMetric: boolean;
   favorites: City[];
+  isDarkTheme: boolean;
 }
 
 export interface LocationDetailsState {

@@ -9,12 +9,12 @@
 .weather-header {
   margin-bottom: 10px;
   font-size: 1.5em;
-  color: #072b41;
+  color: var(--font-color);
   font-weight: bold;
 }
 
 p {
-  color: #072b41;
+  color: var(--font-color);
   font-size: 1.2rem;
 }
 
@@ -22,6 +22,11 @@ p {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+}
+.temp-weather {
+  color: var(--font-color);
+  font-size: 4rem;
+  margin-left: 10%;
 }
 .current-data {
   display: flex;
@@ -42,7 +47,7 @@ p {
   padding: 5px 10px;
   border: none;
   background-color: #74a7de;
-  color: #072b41;
+  color: var(--font-color);
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
@@ -59,6 +64,9 @@ p {
 .description {
   position: relative;
   padding-bottom: 20px;
+  font-weight: lighter;
+  color: var(--font-color);
+  font-size: 1.5rem;
 }
 
 .description::after {
@@ -83,7 +91,7 @@ p {
 .weather-header {
   margin-bottom: 20px;
   font-size: 1.5em;
-  color: #072b41;
+  color: var(--font-color);
 }
 
 .weather-content {
