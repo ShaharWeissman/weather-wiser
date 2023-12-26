@@ -90,11 +90,11 @@ const citiesSlice = createSlice({
       );
       document.documentElement.style.setProperty(
         "--bg-img-col1",
-        state.isDarkTheme ? "lightblue" : "black"
+        state.isDarkTheme ? "black" : "lightblue"
       );
       document.documentElement.style.setProperty(
-        "--bg-img-col1",
-        state.isDarkTheme ? "white" : "grey"
+        "--bg-img-col2",
+        state.isDarkTheme ? "grey" : "white"
       );
     },
   },
