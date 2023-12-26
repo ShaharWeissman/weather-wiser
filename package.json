@@ -4,6 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://ShaharWeissman.github.io/weather-wiser",
+  "engines": {
+    "node": "20.10"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
