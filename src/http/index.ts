@@ -6,7 +6,7 @@ import {
 } from "../tests/mocks/api/service";
 import { API_KEY, NODE_ENV } from "../config/consts";
 import { City, ForecastResponse, LocationDetails } from "../types";
-const apiUrl = "http://dataservice.accuweather.com";
+const apiUrl = "https://dataservice.accuweather.com";
 
 const HttpService = {
   cityLookup: async (cityStr: string): Promise<City[]> => {
