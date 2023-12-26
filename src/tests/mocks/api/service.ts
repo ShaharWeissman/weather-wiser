@@ -142,7 +142,9 @@ export async function getCurrentWeather(locationKey: string) {
     },
   };
 
-  return mockLocationDetails[locationKey] || null;
+  return mockLocationDetails[locationKey]
+    ? [mockLocationDetails[locationKey]]
+    : null;
 }
 
 export async function getDailyForecast(locationKey: string, isMetric: boolean) {
@@ -465,6 +467,72 @@ export async function getDailyForecast(locationKey: string, isMetric: boolean) {
       DailyForecasts: [],
     }
   );
+}
+
+export async function getGeoLocation(lat: string, lon: string) {
+  console.log({ lat, lon });
+  return {
+    Version: 1,
+    Key: "215854",
+    Type: "City",
+    Rank: 31,
+    LocalizedName: "Tel Aviv",
+    EnglishName: "Tel Aviv",
+    PrimaryPostalCode: "",
+    Region: {
+      ID: "MEA",
+      LocalizedName: "Middle East",
+      EnglishName: "Middle East",
+    },
+    Country: {
+      ID: "IL",
+      LocalizedName: "Israel",
+      EnglishName: "Israel",
+    },
+    AdministrativeArea: {
+      ID: "TA",
+      LocalizedName: "Tel Aviv",
+      EnglishName: "Tel Aviv",
+      Level: 1,
+      LocalizedType: "District",
+      EnglishType: "District",
+      CountryID: "IL",
+    },
+    TimeZone: {
+      Code: "IST",
+      Name: "Asia/Jerusalem",
+      GmtOffset: 2.0,
+      IsDaylightSaving: false,
+      NextOffsetChange: "2024-03-29T00:00:00Z",
+    },
+    GeoPosition: {
+      Latitude: 32.045,
+      Longitude: 34.77,
+      Elevation: {
+        Metric: {
+          Value: 34.0,
+          Unit: "m",
+          UnitType: 5,
+        },
+        Imperial: {
+          Value: 111.0,
+          Unit: "ft",
+          UnitType: 0,
+        },
+      },
+    },
+    IsAlias: false,
+    SupplementalAdminAreas: [],
+    DataSets: [
+      "AirQualityCurrentConditions",
+      "AirQualityForecasts",
+      "Alerts",
+      "DailyPollenForecast",
+      "ForecastConfidence",
+      "FutureRadar",
+      "MinuteCast",
+    ],
+  };
 }
 
 export const mockFavorites = [

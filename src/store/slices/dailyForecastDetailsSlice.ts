@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getDailyForecast } from "../../tests/mocks/api/service";
 import { DailyForecastDetailsState } from "../../types";
+import HttpService from "../../http";
 
 export const initialState: DailyForecastDetailsState = {
   dailyForecastDetails: [],
@@ -17,7 +17,10 @@ export const fetchDailyForecastDetails = createAsyncThunk(
     locationKey: string;
     isMetric: boolean;
   }) => {
-    const dailyForecastDetails = await getDailyForecast(locationKey, isMetric);
+    const dailyForecastDetails = await HttpService.getDailyForecast(
+      locationKey,
+      isMetric
+    );
     return dailyForecastDetails;
   }
 );
@@ -39,7 +42,7 @@ export const DailyForecastDetailsSlice = createSlice({
         state.error = null;
       }),
       builder.addCase(fetchDailyForecastDetails.fulfilled, (state, action) => {
-        state.dailyForecastDetails = action.payload;
+        state.dailyForecastDetails = action.payload.DailyForecasts;
         state.loading = false;
       });
   },

@@ -23,16 +23,19 @@ function WeatherForecast(): JSX.Element {
 
   return (
     <div className="weather-forecast">
-      {dailyForecastDetails?.[0]?.Date &&
-        dailyForecastDetails?.map((weather, index: number) => (
-          <ForecastCard
-            key={index}
-            day={new Date(weather?.Date + "").toLocaleDateString("en-US", {
-              weekday: "short",
-            })}
-            temperature={weather.Temperature.Maximum.Value}
-          />
-        ))}
+      <div className="forecast-header">Daily Forecast</div>
+      <div className="weather-cards">
+        {dailyForecastDetails?.[0]?.Date &&
+          dailyForecastDetails?.map((weather, index: number) => (
+            <ForecastCard
+              key={index}
+              day={new Date(weather?.Date + "").toLocaleDateString("en-US", {
+                weekday: "short",
+              })}
+              temperature={weather.Temperature.Maximum.Value}
+            />
+          ))}
+      </div>
     </div>
   );
 }

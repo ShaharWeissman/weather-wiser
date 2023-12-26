@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CitiesState } from "../../types";
-import { cityLookup } from "../../tests/mocks/api/service";
+import { CitiesState, City } from "../../types";
+import HttpService from "../../http";
+import notifyService from "../../utils/NotifyMessage";
+// import notifyService from "../../utils/NotifyMessage";
+// import { cityLookup } from "../../tests/mocks/api/service";
 
 const initialState: CitiesState = {
   cities: [],
@@ -9,12 +12,45 @@ const initialState: CitiesState = {
   error: null,
   isMetric: true,
   favorites: [],
+  isDarkTheme: false,
 };
+
+export const fetchGeoCoordinates = createAsyncThunk(
+  "cities/fetchGeoCoordinates",
+  async (_, { dispatch }) => {
+    return new Promise<City>((resolve, reject) => {
+      if (!navigator.geolocation) {
+        notifyService.error("GPS location is not supported by this browser");
+        return reject(new Error("Geolocation not supported"));
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          const lat = position.coords.latitude;
+          const lon = position.coords.longitude;
+          console.log(`${lat} ${lon}`);
+          try {
+            const weatherGeoData = await HttpService.getGeoLocation(lat, lon);
+            dispatch(setSelectedCity(weatherGeoData));
+            resolve(weatherGeoData);
+          } catch (error) {
+            notifyService.error("Error fetching location data");
+            reject(new Error("Error fetching location data"));
+          }
+        },
+        () => {
+          notifyService.error("Geolocation permission denied");
+          reject(new Error("Geolocation permission denied"));
+        }
+      );
+    });
+  }
+);
 
 export const fetchCitiesData = createAsyncThunk(
   "cities/fetchCitiesData",
-  async (cityStr: string) => {
-    const cities = await cityLookup(cityStr);
+  async (cityStr: string): Promise<City[]> => {
+    const cities = await HttpService.cityLookup(cityStr);
     return cities;
   }
 );
@@ -46,6 +82,21 @@ const citiesSlice = createSlice({
         state.favorites.splice(index, 1);
       }
     },
+    toggleDarkTheme: (state) => {
+      state.isDarkTheme = !state.isDarkTheme;
+      document.documentElement.style.setProperty(
+        "--font-color",
+        state.isDarkTheme ? "#4c4f4d" : "#072b41"
+      );
+      document.documentElement.style.setProperty(
+        "--bg-img-col1",
+        state.isDarkTheme ? "lightblue" : "black"
+      );
+      document.documentElement.style.setProperty(
+        "--bg-img-col1",
+        state.isDarkTheme ? "white" : "grey"
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchCitiesData.rejected, (state, action) => {
@@ -61,6 +112,11 @@ const citiesSlice = createSlice({
   },
 });
 
-export const { setCities, setSelectedCity, toggleMetric, toggleFavorite } =
-  citiesSlice.actions;
+export const {
+  setCities,
+  setSelectedCity,
+  toggleMetric,
+  toggleFavorite,
+  toggleDarkTheme,
+} = citiesSlice.actions;
 export default citiesSlice;

@@ -1,0 +1,4 @@
+staticSites:
+  - name: weather-app
+    buildCommand: npm install && npm run build
+    publishDir: build

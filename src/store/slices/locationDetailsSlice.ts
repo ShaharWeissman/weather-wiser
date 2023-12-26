@@ -1,5 +1,5 @@
-import { LocationDetailsState } from "../../types";
-import { getCurrentWeather } from "../../tests/mocks/api/service";
+import HttpService from "../../http";
+import { LocationDetails, LocationDetailsState } from "../../types";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const initialState: LocationDetailsState = {
@@ -10,8 +10,8 @@ export const initialState: LocationDetailsState = {
 
 export const fetchLocationDetails = createAsyncThunk(
   "locationDetails/fetchLocationDetails",
-  async (locationKey: string) => {
-    const locationDetails = await getCurrentWeather(locationKey);
+  async (locationKey: string): Promise<LocationDetails[]> => {
+    const locationDetails = await HttpService.getCurrentWeather(locationKey);
     return locationDetails;
   }
 );
@@ -33,7 +33,7 @@ export const LocationDetailsSlice = createSlice({
         state.error = null;
       }),
       builder.addCase(fetchLocationDetails.fulfilled, (state, action) => {
-        state.locationDetails = action.payload;
+        state.locationDetails = action.payload[0];
         state.loading = false;
       });
   },
