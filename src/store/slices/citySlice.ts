@@ -86,7 +86,7 @@ const citiesSlice = createSlice({
       state.isDarkTheme = !state.isDarkTheme;
       document.documentElement.style.setProperty(
         "--font-color",
-        state.isDarkTheme ? "#4c4f4d" : "#072b41"
+        state.isDarkTheme ? "white" : "#072b41"
       );
       document.documentElement.style.setProperty(
         "--bg-img-col1",
@@ -94,7 +94,11 @@ const citiesSlice = createSlice({
       );
       document.documentElement.style.setProperty(
         "--bg-img-col2",
-        state.isDarkTheme ? "grey" : "white"
+        state.isDarkTheme ? "#262626" : "white"
+      );
+      document.documentElement.style.setProperty(
+        "--cont-col",
+        state.isDarkTheme ? "#4F4F4F" : "#f8f8f0"
       );
     },
   },
