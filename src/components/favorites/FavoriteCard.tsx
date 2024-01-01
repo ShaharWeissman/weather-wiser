@@ -7,9 +7,9 @@ import HttpService from "../../http";
 import { setSelectedCity } from "../../store/slices/citySlice";
 import { useNavigate } from "react-router-dom";
 
-type Props = { city: City };
+type cityProps = { city: City };
 
-function FavoriteCard({ city }: Props): JSX.Element {
+function FavoriteCard({ city }: cityProps): JSX.Element {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const isMetric = useAppSelector((state) => state.cities.isMetric);

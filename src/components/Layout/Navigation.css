@@ -1,4 +1,5 @@
 .navbar {
+  padding: 4px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,17 +29,17 @@
 
 .Navigation {
   display: flex;
-  align-items: center; /* Center items vertically */
+  align-items: center;
   gap: 5px;
 }
 .Navigation a {
-  text-decoration: none; /* Removes underline */
-  color: inherit; /* Optional: ensures the link color matches your design */
+  text-decoration: none;
+  color: inherit;
 }
 
 .Navigation a:active,
 .Navigation a:hover {
-  text-decoration: none; /* Optional: adds underline on hover for visual feedback */
+  text-decoration: none;
 }
 
 .Navigation button {
@@ -60,14 +61,14 @@
 
 .Navigation svg {
   margin-right: 5px;
-  height: 1em; /* Adjust icon size */
+  height: 1em;
 }
 .active-link button {
-  background-color: #507dac; /* Change to the desired pressed button color */
-  color: white; /* Change to the desired text color */
-  font-weight: bold; /* Optionally make the text bold */
+  background-color: #507dac;
+  color: white;
+  font-weight: bold;
 }
 
 .active-link button:hover {
-  background-color: #507dac; /* Keep the same color on hover */
+  background-color: #507dac;
 }

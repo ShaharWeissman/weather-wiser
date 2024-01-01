@@ -4,6 +4,7 @@ import { useAppSelector } from "../../store/store";
 
 function Favorites(): JSX.Element {
   const favorites = useAppSelector((state) => state.cities.favorites);
+
   return (
     <div className="favorite-container">
       {favorites.length ? (

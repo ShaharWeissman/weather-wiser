@@ -1,4 +1,20 @@
 .favorite-card {
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* animation bonus */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.favorite-card {
   position: relative;
   border-radius: 12px;
   background-color: #fff;
@@ -9,17 +25,6 @@
   margin-bottom: 10px;
   margin-left: 20px;
   background-color: #dfdfd8;
-}
-
-.favorite-background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  opacity: 0.2;
-  z-index: -1;
 }
 
 .favorite-card-content {

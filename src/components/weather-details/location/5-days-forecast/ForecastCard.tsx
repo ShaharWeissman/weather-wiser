@@ -1,12 +1,12 @@
 import { useAppSelector } from "../../../../store/store";
 import "./ForecastCard.css";
 
-type Props = {
+type ForecastProps = {
   day: string;
   temperature: number;
 };
 
-function ForecastCard({ day, temperature }: Props): JSX.Element {
+function ForecastCard({ day, temperature }: ForecastProps): JSX.Element {
   const isMetric = useAppSelector((state) => state.cities.isMetric);
   return (
     <div className="forecast-card">

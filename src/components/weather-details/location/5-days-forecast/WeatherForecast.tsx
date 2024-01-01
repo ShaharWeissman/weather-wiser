@@ -1,4 +1,4 @@
-import "./WeatherForecast.css"; // Make sure the path is correct
+import "./WeatherForecast.css";
 import ForecastCard from "./ForecastCard";
 import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { useEffect } from "react";

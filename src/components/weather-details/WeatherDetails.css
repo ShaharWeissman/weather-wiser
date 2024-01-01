@@ -7,4 +7,9 @@
   padding: 20px;
   box-sizing: border-box;
 }
-
+.SearchField {
+  width: 100%;
+  min-width: 300px;
+  max-width: 800px;
+  margin-bottom: 20px;
+}
