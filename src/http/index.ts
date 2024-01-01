@@ -16,6 +16,7 @@ const HttpService = {
     const data = await response.json();
     return data;
   },
+
   getCurrentWeather: async (
     locationKey: string
   ): Promise<LocationDetails[]> => {
