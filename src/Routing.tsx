@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 import { ThemeProvider, createTheme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useAppSelector } from "./store/store";
+import Page404 from "./components/Layout/Page404";
 
 function Routing(): JSX.Element {
   const isDarkTheme = useAppSelector((state) => state.cities.isDarkTheme);
@@ -23,6 +24,7 @@ function Routing(): JSX.Element {
         <Route path="/" element={<Layout />}>
           <Route index element={<WeatherDetails />} />
           <Route path="favorites" element={<Favorites />} />
+          <Route path="*" element={<Page404 />} />
         </Route>
       </Routes>
     </ThemeProvider>
