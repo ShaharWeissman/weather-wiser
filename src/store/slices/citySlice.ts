@@ -100,6 +100,10 @@ const citiesSlice = createSlice({
         "--cont-col",
         state.isDarkTheme ? "#4F4F4F" : "#f8f8f0"
       );
+      document.documentElement.style.setProperty(
+        "--card-col",
+        state.isDarkTheme ? "#363636" : "dfdfd8"
+      );
     },
   },
   extraReducers: (builder) => {
