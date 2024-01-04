@@ -24,15 +24,15 @@
   height: auto;
   margin-bottom: 10px;
   margin-left: 20px;
-  background-color: #dfdfd8;
+  background-color: var(--card-col);
 }
 
 .favorite-card-content {
   position: relative;
   text-align: center;
-  color: #031119;
+  color: var(--font-color);
   z-index: 1;
-  padding: 10px; /* Add padding for the text */
+  padding: 10px;
 }
 
 .favorite-weather-day,
