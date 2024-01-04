@@ -19,7 +19,7 @@ function WeatherForecast(): JSX.Element {
       );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCity]);
+  }, [selectedCity, isMetric]);
 
   return (
     <div className="weather-forecast">
