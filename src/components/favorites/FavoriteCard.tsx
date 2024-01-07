@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./FavoriteCard.css";
 import CardImage from "../../assets/images/card-image.jpg";
-import { City, LocationDetails } from "../../types";
+import { City } from "../../types/ICity";
+import { LocationDetails } from "../../types/ICurrentWeather";
 import { useAppDispatch, useAppSelector } from "../../store/store";
 import HttpService from "../../http";
 import { setSelectedCity } from "../../store/slices/citySlice";
