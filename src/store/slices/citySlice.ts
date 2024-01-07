@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CitiesState, City } from "../../types";
+import { CitiesState, City } from "../../types/ICity";
 import HttpService from "../../http";
 import notifyService from "../../utils/NotifyMessage";
 // import notifyService from "../../utils/NotifyMessage";
@@ -50,7 +50,10 @@ export const fetchGeoCoordinates = createAsyncThunk(
 export const fetchCitiesData = createAsyncThunk(
   "cities/fetchCitiesData",
   async (cityStr: string): Promise<City[]> => {
-    const cities = await HttpService.cityLookup(cityStr);
+    const { data: cities, status } = await HttpService.cityLookup(cityStr);
+    if (status === 503) {
+      notifyService.error("you exceeded number of api calls");
+    }
     return cities;
   }
 );

@@ -5,16 +5,21 @@ import {
   getGeoLocation as mockGetGeoLocation,
 } from "../tests/mocks/api/service";
 import { API_KEY, NODE_ENV } from "../config/consts";
-import { City, ForecastResponse, LocationDetails } from "../types";
+import { City } from "../types/ICity";
+import { ForecastResponse } from "../types/IDailyForecast";
+import { LocationDetails } from "../types/ICurrentWeather";
+
 const apiUrl = "https://dataservice.accuweather.com";
 
 const HttpService = {
-  cityLookup: async (cityStr: string): Promise<City[]> => {
+  cityLookup: async (
+    cityStr: string
+  ): Promise<{ data: City[]; status: number }> => {
     const response = await fetch(
       `${apiUrl}/locations/v1/cities/autocomplete?q=${cityStr}&apikey=${API_KEY}`
     );
     const data = await response.json();
-    return data;
+    return { data, status: response.status };
   },
 
   getCurrentWeather: async (
@@ -26,6 +31,7 @@ const HttpService = {
     const data = await response.json();
     return data;
   },
+
   getDailyForecast: async (
     locationKey: string,
     isMetric: boolean
@@ -36,6 +42,7 @@ const HttpService = {
     const data = await response.json();
     return data;
   },
+
   getGeoLocation: async (lat: number, lon: number): Promise<City> => {
     const response = await fetch(
       `${apiUrl}/locations/v1/cities/geoposition/search?apikey=${API_KEY}&q=${lat},${lon}&toplevel=true`

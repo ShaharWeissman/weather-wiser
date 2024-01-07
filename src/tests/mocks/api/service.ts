@@ -1,4 +1,6 @@
-import { DailyForecast, LocationDetails } from "./../../../types/index";
+import { DailyForecast } from "./../../../types/IDailyForecast";
+import { LocationDetails } from "./../../../types/ICurrentWeather";
+
 // mockData.ts
 export interface WeatherDay {
   day: string;
@@ -119,7 +121,7 @@ export async function getCurrentWeather(locationKey: string) {
       //Tel aviv
       LocalObservationDateTime: "2023-12-24T15:42:00+02:00",
       EpochTime: 1703425320,
-      WeatherText: "Mostly cloudy",
+      WeatherText: "Cloudy and cold",
       WeatherIcon: 6,
       HasPrecipitation: false,
       PrecipitationType: null,
@@ -463,7 +465,7 @@ export async function getDailyForecast(locationKey: string, isMetric: boolean) {
   };
 
   return (
-    forecastMockData["308526"] || {
+    forecastMockData["215854"] || {
       DailyForecasts: [],
     }
   );

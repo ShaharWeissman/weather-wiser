@@ -1,5 +1,8 @@
 import HttpService from "../../http";
-import { LocationDetails, LocationDetailsState } from "../../types";
+import {
+  LocationDetails,
+  LocationDetailsState,
+} from "../../types/ICurrentWeather";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const initialState: LocationDetailsState = {

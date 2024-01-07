@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { DailyForecastDetailsState } from "../../types";
+import { DailyForecastDetailsState } from "../../types/IDailyForecast";
 import HttpService from "../../http";
 
 export const initialState: DailyForecastDetailsState = {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { RootState } from "../../../store/rootState";
-import { City } from "../../../types";
+import { City } from "../../../types/ICity";
 import {
   fetchCitiesData,
   setSelectedCity,
@@ -10,19 +10,7 @@ import { useAppDispatch, useAppSelector } from "../../../store/store";
 
 import "./SearchField.css";
 import notifyService from "../../../utils/NotifyMessage";
-
-const debounce = <F extends (...args: never[]) => void>(
-  func: F,
-  delay: number
-): ((...args: Parameters<F>) => void) => {
-  let timeoutId: number | null = null;
-  return (...args: Parameters<F>) => {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-    timeoutId = setTimeout(() => func(...args), delay);
-  };
-};
+import debounce from "../../../utils/Debounce";
 
 function SearchField(): JSX.Element {
   const dispatch = useAppDispatch();
