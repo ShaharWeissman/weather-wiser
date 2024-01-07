@@ -3,12 +3,13 @@
   justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  width: 800px;
+  width: 950px;
   padding: 10px;
 }
 .weather-header {
+  display: flex;
   margin-bottom: 10px;
-  font-size: 1.5em;
+  font-size: 1.9em;
   color: var(--font-color);
   font-weight: bold;
 }

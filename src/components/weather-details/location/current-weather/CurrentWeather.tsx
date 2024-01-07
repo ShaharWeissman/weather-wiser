@@ -1,7 +1,7 @@
 import "./CurrentWeather.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
-
+import { weatherIconUrl } from "../../../../utils/IconImageLink";
 import {
   fetchCitiesData,
   fetchGeoCoordinates,
@@ -12,13 +12,6 @@ import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { useEffect } from "react";
 import { fetchLocationDetails } from "../../../../store/slices/locationDetailsSlice";
 import { DEFAULT_CITY_SEARCH_TEXT } from "../../../../config/consts";
-
-function formatIconNumber(number: number): string {
-  if (number < 10) {
-    return `0${number}`;
-  }
-  return `${number}`;
-}
 
 function CurrentWeather(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.cities.selectedCity);
@@ -70,9 +63,9 @@ function CurrentWeather(): JSX.Element {
     }
   };
 
-  const weatherIconUrl = `https://developer.accuweather.com/sites/default/files/${formatIconNumber(
+  const currentWeatherIcon = weatherIconUrl(
     locationDetails?.WeatherIcon as number
-  )}-s.png`;
+  );
 
   return (
     <div>
@@ -82,7 +75,7 @@ function CurrentWeather(): JSX.Element {
 
           <p>{selectedCity?.LocalizedName}</p>
           <div className="weather-icon-temp">
-            <img src={weatherIconUrl} alt="icon" className="icon-weather" />
+            <img src={currentWeatherIcon} alt="icon" className="icon-weather" />
             <div className="temp-weather">
               {
                 locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
