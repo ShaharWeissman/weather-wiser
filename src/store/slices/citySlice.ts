@@ -47,8 +47,12 @@ export const fetchGeoCoordinates = createAsyncThunk(
   }
 );
 
+// action {type,payload}
+
 export const fetchCitiesData = createAsyncThunk(
+  // type
   "cities/fetchCitiesData",
+  // payload creator callback
   async (cityStr: string): Promise<City[]> => {
     const { data: cities, status } = await HttpService.cityLookup(cityStr);
     if (status === 503) {
