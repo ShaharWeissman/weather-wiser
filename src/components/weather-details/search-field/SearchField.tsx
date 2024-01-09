@@ -1,6 +1,5 @@
 import React from "react";
 import { Autocomplete, TextField } from "@mui/material";
-import { RootState } from "../../../store/rootState";
 import { City } from "../../../types/ICity";
 import {
   fetchCitiesData,
@@ -14,7 +13,7 @@ import debounce from "../../../utils/Debounce";
 
 function SearchField(): JSX.Element {
   const dispatch = useAppDispatch();
-  const cities = useAppSelector((state: RootState) => state.cities.cities);
+  const cities = useAppSelector((state) => state.cities.cities);
 
   const handleInputChange = debounce((_: unknown, cityStr: string) => {
     console.log(`handleInputChange:`, { cityStr });
