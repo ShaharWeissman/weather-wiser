@@ -47,7 +47,6 @@ export const fetchGeoCoordinates = createAsyncThunk(
   }
 );
 
-// action {type,payload}
 
 export const fetchCitiesData = createAsyncThunk(
   // type
