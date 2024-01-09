@@ -25,6 +25,7 @@
   margin-bottom: 10px;
   margin-left: 20px;
   background-color: var(--card-col);
+  max-width: 100%;
 }
 
 .favorite-card-content {
