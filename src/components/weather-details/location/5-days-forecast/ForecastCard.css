@@ -44,3 +44,43 @@
     transform: translateX(0);
   }
 }
+
+@media (max-width: 600px) {
+  .forecast-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+    padding: 10px;
+  }
+
+  .card-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .weather-day,
+  .weather-temperature {
+    text-align: right;
+    margin: 0;
+  }
+
+  .weather-day {
+    font-size: 3.3rem;
+    order: 1;
+  }
+
+  .weather-temperature {
+    font-size: 2.5rem;
+    order: 3;
+  }
+
+  img {
+    width: 150px;
+    height: auto;
+    order: 2;
+  }
+}
