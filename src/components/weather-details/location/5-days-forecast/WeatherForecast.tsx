@@ -28,7 +28,7 @@ function WeatherForecast(): JSX.Element {
         <div className="forecast-header">Daily Forecast</div>
       </Grid>
       {dailyForecastDetails?.map((weather, index) => (
-        <Grid item xs={6} sm={6} md={4} lg={2.4} key={index}>
+        <Grid item xs={12} sm={10} md={4} lg={2.4} key={index}>
           <ForecastCard
             day={new Date(weather?.Date + "").toLocaleDateString("en-US", {
               weekday: "short",
