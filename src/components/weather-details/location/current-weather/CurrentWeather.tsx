@@ -18,17 +18,16 @@ function CurrentWeather(): JSX.Element {
   const cities = useAppSelector((state) => state.cities.cities);
   const isMetric = useAppSelector((state) => state.cities.isMetric);
   const favorites = useAppSelector((state) => state.cities.favorites);
+  const locationDetails = useAppSelector(
+    (state) => state.locationDetails.locationDetails
+  );
+  const dispatch = useAppDispatch();
 
   const isFavorite = favorites
     .map((city) => city.Key)
     .includes(selectedCity?.Key as string)
     ? "favorite-active"
     : "";
-
-  const locationDetails = useAppSelector(
-    (state) => state.locationDetails.locationDetails
-  );
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchCitiesData(DEFAULT_CITY_SEARCH_TEXT));
