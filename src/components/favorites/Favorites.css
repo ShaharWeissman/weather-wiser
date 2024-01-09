@@ -10,3 +10,13 @@
   width: fit-content;
   box-sizing: border-box;
 }
+@media (max-width: 600px) {
+  .favorite-container {
+    justify-content: center;
+    flex-direction: column;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+  }
+}
