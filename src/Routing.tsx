@@ -6,9 +6,14 @@ import { ThemeProvider, createTheme } from "@mui/material";
 import CssBaseline from "@mui/material/CssBaseline";
 import { useAppSelector } from "./store/store";
 import Page404 from "./components/Layout/Page404";
+import { useEffect } from "react";
 
 function Routing(): JSX.Element {
   const isDarkTheme = useAppSelector((state) => state.cities.isDarkTheme);
+  useEffect(() => {
+    //toggle a class on body of "dark-mode"
+    document.body.classList.toggle("dark-mode-override", isDarkTheme);
+  }, [isDarkTheme]);
 
   // create a darkTheme function to handle dark theme using createTheme
   const darkTheme = createTheme({

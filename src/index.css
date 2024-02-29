@@ -6,6 +6,14 @@
   --card-col: #dfdfd8;
 }
 
+body.dark-mode-override {
+  --font-color: white;
+  --bg-img-col1: black;
+  --bg-img-col2: #262626;
+  --cont-col: #4f4f4f;
+  --card-col: #363636;
+}
+
 html,
 body,
 #root {

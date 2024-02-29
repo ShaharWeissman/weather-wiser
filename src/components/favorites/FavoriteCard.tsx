@@ -24,8 +24,7 @@ function FavoriteCard({ city }: cityProps): JSX.Element {
       setWeatherIcon(weatherIconUrl(locationDetails[0].WeatherIcon));
     }
     getLocationDetails();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [city.Key]);
 
   const cardClickHandler = () => {
     dispatch(setSelectedCity(city));
@@ -35,6 +34,7 @@ function FavoriteCard({ city }: cityProps): JSX.Element {
   return (
     <div className="favorite-card" onClick={cardClickHandler}>
       <div className="favorite-card-content">
+        <button onClick={cardClickHandler}> </button>
         <h5 className="favorite-weather-day">{city.LocalizedName}</h5>
         <img src={weatherIcon} alt="Weather Icon" />
         <h6 className="favorite-weather-temperature">
