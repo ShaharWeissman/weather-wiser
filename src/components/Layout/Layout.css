@@ -1,4 +1,4 @@
-
+/* 
 .Layout{
     display: flex;
     flex-direction: column;
@@ -7,4 +7,4 @@
 
 .Layout > :nth-child(2) {
     margin-top: 170px;
-  }
+  } */

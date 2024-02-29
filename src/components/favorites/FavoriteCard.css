@@ -1,8 +1,7 @@
-.favorite-card {
+/* .favorite-card {
   animation: fadeIn 0.8s ease-in;
 }
 
-/* animation bonus */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -45,4 +44,4 @@
 
 .favorite-weather-day {
   font-weight: bold;
-}
+} */
