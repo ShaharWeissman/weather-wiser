@@ -7,6 +7,7 @@ import HttpService from "../../http";
 import { setSelectedCity } from "../../store/slices/citySlice";
 import { useNavigate } from "react-router-dom";
 import { weatherIconUrl } from "../../utils/IconImageLink";
+import { Box, Typography } from "@mui/material";
 
 type cityProps = { city: City };
 
@@ -32,23 +33,40 @@ function FavoriteCard({ city }: cityProps): JSX.Element {
   };
 
   return (
-    <div className="favorite-card" onClick={cardClickHandler}>
-      <div className="favorite-card-content">
-        <button onClick={cardClickHandler}> </button>
-        <h5 className="favorite-weather-day">{city.LocalizedName}</h5>
+    <Box
+      sx={{
+        borderRadius: "12px",
+        backgroundColor: "#fff",
+        padding: "10px",
+        boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
+        minWidth: "200px",
+        height: "auto",
+        marginBottom: "10px",
+        marginLeft: "20px",
+        bgcolor: "#f8f8f0",
+        maxWidth: "100%",
+        textAlign: "center",
+        animation: "fadeIn 0.8s ease-in",
+        cursor: "pointer",
+      }}
+      onClick={cardClickHandler}>
+      <Box sx={{ padding: "10px" }}>
+        <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+          {city.LocalizedName}
+        </Typography>
         <img src={weatherIcon} alt="Weather Icon" />
-        <h6 className="favorite-weather-temperature">
+        <Typography variant="h6" sx={{ margin: "5px 0" }}>
           {
             locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
               ?.Value
           }
           &nbsp;{isMetric ? "C" : "F"}°
-        </h6>
-        <p className="favorite-weather-description">
+        </Typography>
+        <Typography variant="body1" sx={{ margin: "5px 0" }}>
           {locationDetails?.WeatherText}
-        </p>
-      </div>
-    </div>
+        </Typography>
+      </Box>
+    </Box>
   );
 }
 

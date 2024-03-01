@@ -37,19 +37,44 @@ function SearchField(): JSX.Element {
   };
 
   return (
-    <div className="SearchField">
-      <Autocomplete
-        id="city-select"
-        options={cities || []}
-        getOptionLabel={(option) => option.LocalizedName}
-        getOptionKey={(option) => option.Key}
-        onInputChange={handleInputChange}
-        onChange={handleCitySelect}
-        renderInput={(params) => (
-          <TextField {...params} label="Choose a city" variant="outlined" />
-        )}
-      />
-    </div>
+    <Autocomplete
+      id="city-select"
+      options={cities || []}
+      getOptionLabel={(option) => option.LocalizedName}
+      onInputChange={handleInputChange}
+      onChange={handleCitySelect}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label="Choose a city"
+          variant="outlined"
+          sx={{
+            width: "100%",
+            "& .MuiInputLabel-root": { color: "#74a7de" },
+            "& .MuiInputLabel-root.Mui-focused": { color: "#507dac" },
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: "#507dac",
+              },
+              "&:hover fieldset": {
+                borderColor: "#507dac",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "#507dac",
+              },
+            },
+            boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)",
+            borderRadius: "8px",
+          }}
+        />
+      )}
+      sx={{
+        width: "100%",
+        margin: "auto",
+        borderRadius: "8px",
+        backgroundColor: "background.paper",
+      }}
+    />
   );
 }
 

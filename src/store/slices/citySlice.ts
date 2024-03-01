@@ -90,26 +90,26 @@ const citiesSlice = createSlice({
     },
     toggleDarkTheme: (state) => {
       state.isDarkTheme = !state.isDarkTheme;
-      document.documentElement.style.setProperty(
-        "--font-color",
-        state.isDarkTheme ? "white" : "#072b41"
-      );
-      document.documentElement.style.setProperty(
-        "--bg-img-col1",
-        state.isDarkTheme ? "black" : "lightblue"
-      );
-      document.documentElement.style.setProperty(
-        "--bg-img-col2",
-        state.isDarkTheme ? "#262626" : "white"
-      );
-      document.documentElement.style.setProperty(
-        "--cont-col",
-        state.isDarkTheme ? "#4F4F4F" : "#f8f8f0"
-      );
-      document.documentElement.style.setProperty(
-        "--card-col",
-        state.isDarkTheme ? "#363636" : "dfdfd8"
-      );
+      // document.documentElement.style.setProperty(
+      //   "--font-color",
+      //   state.isDarkTheme ? "white" : "#072b41"
+      // );
+      // document.documentElement.style.setProperty(
+      //   "--bg-img-col1",
+      //   state.isDarkTheme ? "black" : "lightblue"
+      // );
+      // document.documentElement.style.setProperty(
+      //   "--bg-img-col2",
+      //   state.isDarkTheme ? "#262626" : "white"
+      // );
+      // document.documentElement.style.setProperty(
+      //   "--cont-col",
+      //   state.isDarkTheme ? "#4F4F4F" : "#f8f8f0"
+      // );
+      // document.documentElement.style.setProperty(
+      //   "--card-col",
+      //   state.isDarkTheme ? "#363636" : "dfdfd8"
+      // );
     },
   },
   extraReducers: (builder) => {

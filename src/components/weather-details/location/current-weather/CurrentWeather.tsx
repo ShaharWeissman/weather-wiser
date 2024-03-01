@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { useEffect } from "react";
 import { fetchLocationDetails } from "../../../../store/slices/locationDetailsSlice";
 import { DEFAULT_CITY_SEARCH_TEXT } from "../../../../config/consts";
+import { Box, Button, Typography } from "@mui/material";
 
 function CurrentWeather(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.cities.selectedCity);
@@ -67,42 +68,94 @@ function CurrentWeather(): JSX.Element {
   );
 
   return (
-    <div>
-      <div className="current-weather">
-        <div className="current-data">
-          <div className="weather-header">Current Weather</div>
-
-          <p>{selectedCity?.LocalizedName}</p>
-          <div className="weather-icon-temp">
-            <img src={currentWeatherIcon} alt="icon" className="icon-weather" />
-            <div className="temp-weather">
-              {
-                locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
-                  ?.Value
-              }
-              &nbsp;{isMetric ? "C" : "F"}°
-            </div>
-          </div>
-        </div>
-        <div className="favorites">
-          <button
-            onClick={toggleFavoriteHandler}
-            className={isFavorite ? "favorite-active" : ""}>
-            {isFavorite ? (
-              <>
-                <RemoveCircleIcon />
-                <span>Remove</span>
-              </>
-            ) : (
-              <>
-                <FavoriteIcon /> <span>Add</span>
-              </>
-            )}
-          </button>
-        </div>
-      </div>
-      <div className="description">{locationDetails?.WeatherText}</div>
-    </div>
+    <Box
+      sx={{
+        display: "flex",
+        bgcolor: "#f8f8f0",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        alignItems: "center",
+        padding: "10px",
+        width: "100%",
+      }}>
+      <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Typography
+          variant="h5"
+          sx={{ marginBottom: "10px", fontWeight: "bold" }}>
+          Current Weather
+        </Typography>
+        <Typography>{selectedCity?.LocalizedName}</Typography>
+        <Box sx={{ display: "flex", alignItems: "flex-start" }}>
+          <img src={currentWeatherIcon} alt="icon" className="icon-weather" />
+          <Typography
+            variant="h2"
+            sx={{ color: "var(--font-color)", fontSize: "4rem", ml: "10%" }}>
+            {
+              locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
+                ?.Value
+            }
+            &nbsp;{isMetric ? "C" : "F"}°
+          </Typography>
+        </Box>
+      </Box>
+      <Box>
+        <Button
+          onClick={toggleFavoriteHandler}
+          className={isFavorite ? "favorite-active" : ""}
+          sx={{
+            display: "flex",
+            gap: "5px",
+            alignItems: "center",
+            marginLeft: "10px",
+            padding: "5px 10px",
+            backgroundColor: "#74a7de",
+            color: "var(--font-color)",
+            borderRadius: "5px",
+            cursor: "pointer",
+            fontSize: "1rem",
+            "&:hover": {
+              backgroundColor: "#507dac",
+            },
+            ...(isFavorite && {
+              backgroundColor: "#db8787",
+              color: "#411007",
+            }),
+          }}>
+          {isFavorite ? (
+            <>
+              <RemoveCircleIcon />
+              <span>Remove</span>
+            </>
+          ) : (
+            <>
+              <FavoriteIcon /> <span>Add</span>
+            </>
+          )}
+        </Button>
+      </Box>
+      <Typography
+        sx={{
+          position: "relative",
+          paddingBottom: "20px",
+          fontWeight: "lighter",
+          color: "var(--font-color)",
+          fontSize: "1.5rem",
+          "&::after": {
+            content: "''",
+            display: "block",
+            width: "100%",
+            height: "2px",
+            background: "#507dac",
+            boxShadow: "0px 1.7px 2px rgba(0, 0, 0, 0.2)",
+            position: "absolute",
+            bottom: "0",
+            left: "0",
+            opacity: "0.5",
+          },
+        }}>
+        {locationDetails?.WeatherText}
+      </Typography>
+    </Box>
   );
 }
 export default CurrentWeather;
