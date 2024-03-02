@@ -10,37 +10,61 @@ import Routing from "./Routing";
 const lightTheme = createTheme({
   palette: {
     primary: {
-      main: "#072b41",
+      main: "#f8f8f0",
     },
     secondary: {
-      main: "#f8f8f0",
+      main: "#dfe9f5",
     },
   },
   typography: {
     fontFamily: '"Secular One", sans-serif',
+    allVariants: {
+      color: "#072b41",
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundAttachment: "fixed",
+          width: "100%",
+          height: "100%",
+          backgroundImage: "linear-gradient(45deg, lightblue, white)",
+        },
+      },
+    },
   },
 });
+
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
-    primary: { main: "#f8f8f0" },
-    secondary: {
-      main: "#072b41",
-    },
+    primary: { main: "#2f3237" },
+    secondary: { main: "#dfe9f5" },
   },
   typography: {
     fontFamily: '"Secular One", sans-serif',
+    allVariants: {
+      color: "white",
+    },
+  },
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundAttachment: "fixed",
+          width: "100%",
+          height: "100%",
+          backgroundImage: "linear-gradient(45deg, #061925, #0b0d22)",
+        },
+      },
+    },
   },
 });
+
 const globalStyles = (
   <GlobalStyles
     styles={{
-      "html, body, #root": {
-        backgroundAttachment: "fixed",
-        width: "100%",
-        height: "100%",
-        backgroundImage: "linear-gradient(45deg, lightblue, white)",
-      },
       button: {
         fontFamily: '"Secular One", sans-serif',
       },
