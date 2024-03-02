@@ -12,7 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { useEffect } from "react";
 import { fetchLocationDetails } from "../../../../store/slices/locationDetailsSlice";
 import { DEFAULT_CITY_SEARCH_TEXT } from "../../../../config/consts";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 
 function CurrentWeather(): JSX.Element {
   const selectedCity = useAppSelector((state) => state.cities.selectedCity);
@@ -23,6 +23,7 @@ function CurrentWeather(): JSX.Element {
     (state) => state.locationDetails.locationDetails
   );
   const dispatch = useAppDispatch();
+  const theme = useTheme();
 
   const isFavorite = favorites
     .map((city) => city.Key)
@@ -71,12 +72,18 @@ function CurrentWeather(): JSX.Element {
     <Box
       sx={{
         display: "flex",
-        bgcolor: "#f8f8f0",
-        justifyContent: "space-between",
+        bgcolor: theme.palette.primary.main,
+        color: theme.palette.text.primary,
         flexWrap: "wrap",
-        alignItems: "center",
-        padding: "10px",
+        padding: "30px",
+        border: "1px solid rgba(101, 101, 101, 0.1)",
+        borderRadius: "12px",
+        boxShadow: "0 2px 4px #507dac91",
+        flexDirection: { xs: "column", sm: "row" },
+        alignItems: { xs: "flex-start", sm: "center" },
+        justifyContent: { xs: "flex-start", sm: "space-between" },
         width: "100%",
+        boxSizing: "border-box",
       }}>
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <Typography
@@ -85,20 +92,30 @@ function CurrentWeather(): JSX.Element {
           Current Weather
         </Typography>
         <Typography>{selectedCity?.LocalizedName}</Typography>
-        <Box sx={{ display: "flex", alignItems: "flex-start" }}>
-          <img src={currentWeatherIcon} alt="icon" className="icon-weather" />
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+          }}>
+          <img src={currentWeatherIcon} alt="icon" />
           <Typography
             variant="h2"
-            sx={{ color: "var(--font-color)", fontSize: "4rem", ml: "10%" }}>
+            sx={{
+              fontSize: "4rem",
+              ml: "30%",
+            }}>
             {
               locationDetails?.Temperature?.[isMetric ? "Metric" : "Imperial"]
                 ?.Value
             }
             &nbsp;{isMetric ? "C" : "F"}°
           </Typography>
+          <Typography variant="h6" sx={{ display: { xs: "block" } }}>
+            {locationDetails?.WeatherText}
+          </Typography>
         </Box>
       </Box>
-      <Box>
+      <Box sx={{ marginLeft: "auto" }}>
         <Button
           onClick={toggleFavoriteHandler}
           className={isFavorite ? "favorite-active" : ""}
@@ -109,7 +126,6 @@ function CurrentWeather(): JSX.Element {
             marginLeft: "10px",
             padding: "5px 10px",
             backgroundColor: "#74a7de",
-            color: "var(--font-color)",
             borderRadius: "5px",
             cursor: "pointer",
             fontSize: "1rem",
@@ -133,28 +149,6 @@ function CurrentWeather(): JSX.Element {
           )}
         </Button>
       </Box>
-      <Typography
-        sx={{
-          position: "relative",
-          paddingBottom: "20px",
-          fontWeight: "lighter",
-          color: "var(--font-color)",
-          fontSize: "1.5rem",
-          "&::after": {
-            content: "''",
-            display: "block",
-            width: "100%",
-            height: "2px",
-            background: "#507dac",
-            boxShadow: "0px 1.7px 2px rgba(0, 0, 0, 0.2)",
-            position: "absolute",
-            bottom: "0",
-            left: "0",
-            opacity: "0.5",
-          },
-        }}>
-        {locationDetails?.WeatherText}
-      </Typography>
     </Box>
   );
 }
