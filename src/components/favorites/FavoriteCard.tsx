@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import "./FavoriteCard.css";
 import { City } from "../../types/ICity";
 import { LocationDetails } from "../../types/ICurrentWeather";
 import { useAppDispatch, useAppSelector } from "../../store/store";
@@ -7,7 +6,7 @@ import HttpService from "../../http";
 import { setSelectedCity } from "../../store/slices/citySlice";
 import { useNavigate } from "react-router-dom";
 import { weatherIconUrl } from "../../utils/IconImageLink";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 type cityProps = { city: City };
 
@@ -26,6 +25,7 @@ function FavoriteCard({ city }: cityProps): JSX.Element {
     }
     getLocationDetails();
   }, [city.Key]);
+  const theme = useTheme();
 
   const cardClickHandler = () => {
     dispatch(setSelectedCity(city));
@@ -36,14 +36,15 @@ function FavoriteCard({ city }: cityProps): JSX.Element {
     <Box
       sx={{
         borderRadius: "12px",
-        backgroundColor: "#fff",
+        bgcolor: theme.palette.primary.main,
+        color: theme.palette.secondary.main,
         padding: "10px",
+        border: "1px solid rgba(101, 101, 101, 0.1)",
         boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
         minWidth: "200px",
         height: "auto",
         marginBottom: "10px",
         marginLeft: "20px",
-        bgcolor: "#f8f8f0",
         maxWidth: "100%",
         textAlign: "center",
         animation: "fadeIn 0.8s ease-in",
