@@ -1,14 +1,28 @@
+import { Box, Typography, useTheme } from "@mui/material";
 import image404 from "../../assets/images/404.png";
-import "./Page404.css";
 
 function Page404(): JSX.Element {
-  return (
-    <div className="container-404">
-      <p>Sorry,</p>
-      <p>The page you are looking for does not exist.</p>
+  const theme = useTheme();
 
-      <img src={image404} alt="Page Not Found" className="image-404" />
-    </div>
+  return (
+    <Box
+      sx={{
+        bgcolor: theme.palette.primary.main,
+        color: theme.palette.text.primary,
+        textAlign: "center",
+        padding: "20px",
+      }}>
+      <Typography variant="h5">Sorry,</Typography>
+      <Typography variant="body1">
+        The page you are looking for does not exist.
+      </Typography>
+
+      <img
+        src={image404}
+        alt="Page Not Found"
+        style={{ width: "100%", maxWidth: "300px", margin: "20px auto" }}
+      />
+    </Box>
   );
 }
 

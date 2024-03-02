@@ -1,7 +1,6 @@
 import Logo from "../../assets/images/weather.logo.jpg";
 import HomeIcon from "@mui/icons-material/Home";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import "./Navigation.css";
 import TemperatureToggle from "../TempatureToggle";
 import DarkModeToggle from "../DarkModeToggle";
 import {
@@ -20,7 +19,11 @@ function Navigation(): JSX.Element {
   console.log(theme.palette);
 
   return (
-    <AppBar position="sticky" sx={{ bgcolor: "#f8f8f0", color: "#072b41" }}>
+    <AppBar
+      position="sticky"
+      sx={{
+        bgcolor: theme.palette.primary.main,
+      }}>
       <Toolbar
         sx={{
           flexDirection: { xs: "column", sm: "row" },
