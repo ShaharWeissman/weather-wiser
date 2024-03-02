@@ -1,4 +1,3 @@
-import "./CurrentWeather.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { weatherIconUrl } from "../../../../utils/IconImageLink";
