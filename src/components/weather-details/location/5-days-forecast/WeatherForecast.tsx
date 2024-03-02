@@ -1,12 +1,12 @@
-import "./WeatherForecast.css";
 import ForecastCard from "./ForecastCard";
 import { useAppDispatch, useAppSelector } from "../../../../store/store";
 import { useEffect } from "react";
 import { fetchDailyForecastDetails } from "../../../../store/slices/dailyForecastDetailsSlice";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography, useTheme } from "@mui/material";
 import { weatherIconUrl } from "../../../../utils/IconImageLink";
 
 function WeatherForecast(): JSX.Element {
+  const theme = useTheme();
   const selectedCity = useAppSelector((state) => state.cities.selectedCity);
   const isMetric = useAppSelector((state) => state.cities.isMetric);
   const dailyForecastDetails = useAppSelector(
@@ -23,7 +23,12 @@ function WeatherForecast(): JSX.Element {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity, isMetric]);
   return (
-    <Box bgcolor="#f8f8f0" p={2}>
+    <Box
+      sx={{
+        bgcolor: theme.palette.primary.main,
+        color: theme.palette.text.primary,
+      }}
+      p={2}>
       <Typography
         variant="h5"
         style={{ fontWeight: "bold", marginTop: "20px" }}>

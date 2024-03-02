@@ -1,6 +1,5 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { useAppSelector } from "../../../../store/store";
-import "./ForecastCard.css";
 
 type ForecastProps = {
   day: string;
@@ -14,20 +13,22 @@ function ForecastCard({
   forecastIcon,
 }: ForecastProps): JSX.Element {
   const isMetric = useAppSelector((state) => state.cities.isMetric);
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
+        bgcolor: theme.palette.primary.main,
+        height: "auto",
         borderRadius: "16px",
-        bgcolor: "#f8f8f0",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0 2px 4px #507dac91",
         margin: "10px",
         minWidth: "150px",
-        height: "130px",
+        // height: "130px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         overflow: "hidden",
-        backgroundColor: "var(--card-col)",
         animation: "fadeIn 0.5s ease-out",
         "&:hover": {
           cursor: "pointer",
@@ -37,7 +38,6 @@ function ForecastCard({
         sx={{
           position: "relative",
           textAlign: "center",
-          color: "var(--font-color)",
         }}>
         <Typography
           variant="h6"
