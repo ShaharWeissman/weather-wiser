@@ -10,10 +10,10 @@ function WeatherDetails(): JSX.Element {
       className="WeatherDetails"
       direction="column"
       alignItems="center">
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={6} md={8} lg={10}>
         <SearchField />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} sm={6} md={8} lg={10}>
         <Location />
       </Grid>
     </Grid>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, TextField, useTheme } from "@mui/material";
 import { City } from "../../../types/ICity";
 import {
   fetchCitiesData,
@@ -7,14 +7,13 @@ import {
 } from "../../../store/slices/citySlice";
 import { useAppDispatch, useAppSelector } from "../../../store/store";
 
-import "./SearchField.css";
 import notifyService from "../../../utils/NotifyMessage";
 import debounce from "../../../utils/Debounce";
 
 function SearchField(): JSX.Element {
   const dispatch = useAppDispatch();
   const cities = useAppSelector((state) => state.cities.cities);
-
+  const theme = useTheme();
   const handleInputChange = debounce((_: unknown, cityStr: string) => {
     console.log(`handleInputChange:`, { cityStr });
     const isEnglish = /^[A-Za-z ]+$/;
@@ -49,9 +48,10 @@ function SearchField(): JSX.Element {
           label="Choose a city"
           variant="outlined"
           sx={{
+            bgcolor: theme.palette.primary.main,
+            color: theme.palette.text.primary,
             width: "100%",
-            "& .MuiInputLabel-root": { color: "#74a7de" },
-            "& .MuiInputLabel-root.Mui-focused": { color: "#507dac" },
+            "& .MuiInputLabel-root.Mui-focused": { color: "#87a4c4" },
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
                 borderColor: "#507dac",
@@ -69,7 +69,8 @@ function SearchField(): JSX.Element {
         />
       )}
       sx={{
-        width: "100%",
+        maxWidth: "600px",
+        width: "75vw",
         margin: "auto",
         borderRadius: "8px",
         backgroundColor: "background.paper",
