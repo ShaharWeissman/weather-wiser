@@ -16,7 +16,7 @@ function FavoriteCard({ city }: cityProps): JSX.Element {
   const isMetric = useAppSelector((state) => state.cities.isMetric);
   const [locationDetails, setLocationDetails] = useState<LocationDetails>();
   const [weatherIcon, setWeatherIcon] = useState("");
-
+  const theme = useTheme();
   useEffect(() => {
     async function getLocationDetails() {
       const locationDetails = await HttpService.getCurrentWeather(city.Key);
@@ -25,7 +25,6 @@ function FavoriteCard({ city }: cityProps): JSX.Element {
     }
     getLocationDetails();
   }, [city.Key]);
-  const theme = useTheme();
 
   const cardClickHandler = () => {
     dispatch(setSelectedCity(city));
