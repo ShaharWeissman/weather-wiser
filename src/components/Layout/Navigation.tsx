@@ -53,14 +53,20 @@ function Navigation(): JSX.Element {
           }}>
           <Box sx={{ display: "flex", gap: 2 }}></Box>
           <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            <Button color="inherit" startIcon={<HomeIcon />}>
+            <Button
+              color="inherit"
+              startIcon={<HomeIcon />}
+              sx={{ border: "1px solid" }}>
               Home
             </Button>
           </NavLink>
           <NavLink
             to="/favorites"
             style={{ textDecoration: "none", color: "inherit" }}>
-            <Button color="inherit" startIcon={<FavoriteIcon />}>
+            <Button
+              color="inherit"
+              startIcon={<FavoriteIcon />}
+              sx={{ border: "1px solid" }}>
               Favorites
             </Button>
           </NavLink>
