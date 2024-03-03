@@ -36,7 +36,6 @@ function FavoriteCard({ city }: cityProps): JSX.Element {
       sx={{
         borderRadius: "12px",
         bgcolor: theme.palette.primary.main,
-        color: theme.palette.secondary.main,
         padding: "10px",
         border: "1px solid rgba(101, 101, 101, 0.1)",
         boxShadow: "0 2px 5px rgba(0, 0, 0, 0.2)",
