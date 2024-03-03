@@ -19,7 +19,7 @@ class NotifyService {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private extractMessage(err: any): string {
     if (typeof err === "string") return err;
-    if (typeof err.response?.data === "string") return err.response.data; // Axios
+    if (typeof err.response?.data === "string") return err.response.data;
     if (typeof err.message === "string") return err.message;
     return "Some error, please try again.";
   }

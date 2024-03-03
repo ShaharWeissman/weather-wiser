@@ -13,7 +13,7 @@ const lightTheme = createTheme({
       main: "#f8f8f0",
     },
     secondary: {
-      main: "#dfe9f5",
+      main: "#0a3a58",
     },
   },
   typography: {
