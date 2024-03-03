@@ -11,6 +11,7 @@ function TemperatureToggle() {
 
   return (
     <ToggleButtonGroup
+      sx={{ mb: "2%" }}
       value={isMetric}
       exclusive
       onChange={handleTemperatureChange}
