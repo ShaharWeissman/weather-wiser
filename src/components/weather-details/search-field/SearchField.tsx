@@ -47,7 +47,7 @@ function SearchField(): JSX.Element {
       renderInput={(params) => (
         <TextField
           {...params}
-          label="Choose a city"
+          label="Select a City"
           variant="outlined"
           sx={{
             bgcolor: theme.palette.primary.main,
