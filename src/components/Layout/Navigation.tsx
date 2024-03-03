@@ -28,48 +28,75 @@ function Navigation(): JSX.Element {
         sx={{
           flexDirection: { xs: "column", sm: "row" },
           alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
         }}>
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="logo"
-          sx={{ mr: 2 }}>
-          <img
-            src={Logo}
-            alt="Weather logo"
-            style={{ width: 50, height: "auto" }}
-          />
-        </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Abra Weather Task
-        </Typography>
+        {/* logo... */}
         <Box
           sx={{
             display: "flex",
+            flexDirection: "row",
             alignItems: "center",
-            textAlign: "center",
             gap: 2,
           }}>
-          <Box sx={{ display: "flex", gap: 2 }}></Box>
-          <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="logo"
+            sx={{ mr: 2 }}>
+            <img
+              src={Logo}
+              alt="Weather logo"
+              style={{ width: 50, height: "auto" }}
+            />
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Abra Weather Task
+          </Typography>
+        </Box>
+
+        {/* nav buttons.... */}
+        <Box
+          sx={{
+            flexGrow: 1,
+            justifyContent: "center",
+            display: "flex",
+
+            gap: 4,
+          }}>
+          <NavLink to="/" style={{ textDecoration: "none" }}>
             <Button
-              color="inherit"
+              variant="outlined"
               startIcon={<HomeIcon />}
-              sx={{ border: "1px solid" }}>
+              sx={{
+                color: theme.palette.secondary.main,
+                borderColor: theme.palette.secondary.main,
+              }}>
               Home
             </Button>
           </NavLink>
-          <NavLink
-            to="/favorites"
-            style={{ textDecoration: "none", color: "inherit" }}>
+          <NavLink to="/favorites" style={{ textDecoration: "none" }}>
             <Button
-              color="inherit"
+              variant="outlined"
               startIcon={<FavoriteIcon />}
-              sx={{ border: "1px solid" }}>
+              sx={{
+                color: theme.palette.secondary.main,
+                borderColor: theme.palette.secondary.main,
+              }}>
               Favorites
             </Button>
           </NavLink>
+        </Box>
+
+        {/* box fo the toggels.... */}
+        <Box
+          sx={{
+            display: { xs: "flex", sm: "flex" },
+            justifyContent: "flex-end",
+            gap: 2,
+            mt: { xs: 2, sm: 0 },
+          }}>
           <TemperatureToggle />
           <DarkModeToggle />
         </Box>
