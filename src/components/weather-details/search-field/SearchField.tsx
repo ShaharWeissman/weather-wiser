@@ -14,17 +14,19 @@ function SearchField(): JSX.Element {
   const dispatch = useAppDispatch();
   const cities = useAppSelector((state) => state.cities.cities);
   const theme = useTheme();
+
   const handleInputChange = debounce((_: unknown, cityStr: string) => {
     console.log(`handleInputChange:`, { cityStr });
     const isEnglish = /^[A-Za-z ]+$/;
+    if (!cityStr) {
+      return;
+    }
     if (!isEnglish.test(cityStr)) {
       console.log("Error - Only English letters allowed!");
       notifyService.error("Please use only English characters");
       return;
     }
-    if (cityStr?.length) {
-      dispatch(fetchCitiesData(cityStr));
-    }
+    dispatch(fetchCitiesData(cityStr));
   }, 500);
 
   const handleCitySelect = (
