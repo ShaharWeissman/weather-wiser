@@ -17,7 +17,7 @@ function SearchField(): JSX.Element {
 
   const handleInputChange = debounce((_: unknown, cityStr: string) => {
     console.log(`handleInputChange:`, { cityStr });
-    const isEnglish = /^[A-Za-z ]+$/;
+    const isEnglish = /^[A-Za-z , ]+$/;
     if (!cityStr) {
       return;
     }
@@ -41,7 +41,10 @@ function SearchField(): JSX.Element {
     <Autocomplete
       id="city-select"
       options={cities || []}
-      getOptionLabel={(option) => option.LocalizedName}
+      // getOptionLabel={(option) => option.LocalizedName}
+      getOptionLabel={(option) =>
+        `${option.LocalizedName},${option.Country.LocalizedName}`
+      }
       onInputChange={handleInputChange}
       onChange={handleCitySelect}
       renderInput={(params) => (
